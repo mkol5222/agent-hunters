@@ -9,5 +9,5 @@ npm install -g opencode-ai
 # agent-browser
 npm install -g agent-browser
 
-# Chromiumpx playwright install chromium
+# Chromium needed for agent-browser
 npx -y playwright install chromium
