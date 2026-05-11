@@ -144,3 +144,4 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+google-chrome-stable_current_amd64.deb
