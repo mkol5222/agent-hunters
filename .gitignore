@@ -1,6 +1,13 @@
 
 .env.keys
 
+# skills etc
+
+.agents/
+
+# reports
+reports/
+
 # Logs
 logs
 *.log

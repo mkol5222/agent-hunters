@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "skills": {
+    "agent-browser": {
+      "source": "vercel-labs/agent-browser",
+      "sourceType": "github",
+      "skillPath": "skills/agent-browser/SKILL.md",
+      "computedHash": "228f87d57035100d9dc6efcfc05aafd4b6e3962adacaa04b8217ab2fadb15dc8"
+    },
+    "powerpoint": {
+      "source": "igorwarzocha/opencode-workflows",
+      "sourceType": "github",
+      "skillPath": "cowork/.opencode/skill/powerpoint/SKILL.md",
+      "computedHash": "a16d52363f95bf9030a173b75282017319ddb0b8466ed11cd8b77a760030ed37"
+    }
+  }
+}
