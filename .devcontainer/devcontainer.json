@@ -1,0 +1,21 @@
+{
+	"name": "Ubuntu",
+	"image": "mcr.microsoft.com/devcontainers/base:noble",
+	"features": {
+		"ghcr.io/devcontainers/features/node:2": {},
+		"ghcr.io/devcontainers/features/desktop-lite:1": {}
+	},
+	"forwardPorts": [
+		6080,
+		5901
+	],
+	"portsAttributes": {
+		"6080": {
+			"label": "noVNC (browser)"
+		}
+
+	},
+	"runArgs": [
+		"--shm-size=2g"
+	] 
+}
