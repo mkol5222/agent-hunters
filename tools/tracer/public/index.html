@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenCode Tracer</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0d1117; --surface: #161b22; --border: #30363d;
+  --text: #e6edf3; --text-dim: #8b949e; --accent: #58a6ff;
+  --green: #3fb950; --orange: #d29922; --red: #f85149;
+  --purple: #bc8cff; --cyan: #39d2c0; --pink: #f778ba;
+  --radius: 8px; --shadow: 0 1px 3px rgba(0,0,0,.3);
+}
+html, body { height: 100%; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.5; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.layout { display: flex; height: 100vh; }
+.sidebar { width: 220px; background: var(--surface); border-right: 1px solid var(--border); padding: 16px 0; display: flex; flex-direction: column; flex-shrink: 0; }
+.sidebar h1 { font-size: 16px; font-weight: 600; padding: 0 16px 16px; color: var(--accent); letter-spacing: -.3px; }
+.sidebar nav { display: flex; flex-direction: column; gap: 2px; }
+.sidebar nav a { padding: 8px 16px; color: var(--text-dim); cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 13px; border-left: 2px solid transparent; transition: .15s; }
+.sidebar nav a:hover, .sidebar nav a.active { color: var(--text); background: rgba(88,166,255,.08); text-decoration: none; }
+.sidebar nav a.active { border-left-color: var(--accent); color: var(--accent); }
+
+.main { flex: 1; overflow-y: auto; padding: 24px; min-width: 0; }
+.view { display: none; }
+.view.active { display: block; }
+
+h2 { font-size: 20px; font-weight: 600; margin-bottom: 20px; }
+h3 { font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--text-dim); text-transform: uppercase; letter-spacing: .5px; }
+
+/* Cards */
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; margin-bottom: 16px; }
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 24px; }
+.stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; text-align: center; }
+.stat-card .num { font-size: 28px; font-weight: 700; color: var(--accent); }
+.stat-card .label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: .5px; margin-top: 4px; }
+
+/* Table */
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--border); font-size: 13px; }
+th { color: var(--text-dim); font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: .5px; }
+tr:hover td { background: rgba(88,166,255,.04); }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; }
+.badge-msg { background: rgba(57,210,192,.15); color: var(--cyan); }
+.badge-tool { background: rgba(188,140,255,.15); color: var(--purple); }
+.badge-agent { background: rgba(247,120,186,.15); color: var(--pink); }
+
+/* Search */
+.search-bar { display: flex; gap: 8px; margin-bottom: 16px; }
+.search-bar input { flex: 1; padding: 8px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); color: var(--text); font-size: 14px; outline: none; }
+.search-bar input:focus { border-color: var(--accent); }
+.search-bar button { padding: 8px 16px; background: var(--accent); color: #fff; border: none; border-radius: var(--radius); cursor: pointer; font-weight: 600; font-size: 13px; }
+.search-bar button:hover { opacity: .9; }
+
+/* Conversation */
+.timeline { position: relative; padding-left: 32px; }
+.timeline::before { content: ''; position: absolute; left: 12px; top: 8px; bottom: 8px; width: 2px; background: var(--border); }
+.timeline-item { position: relative; margin-bottom: 8px; padding: 12px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+.timeline-item::before { content: ''; position: absolute; left: -24px; top: 16px; width: 10px; height: 10px; border-radius: 50%; background: var(--border); border: 2px solid var(--bg); }
+.timeline-item.message::before { background: var(--cyan); }
+.timeline-item.tool::before { background: var(--purple); }
+.timeline-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; gap: 8px; flex-wrap: wrap; }
+.timeline-role { font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .3px; }
+.timeline-role.user { color: var(--cyan); }
+.timeline-role.assistant { color: var(--green); }
+.timeline-role.system { color: var(--orange); }
+.timeline-role.tool { color: var(--purple); }
+.timeline-ts { font-size: 11px; color: var(--text-dim); }
+.timeline-content { white-space: pre-wrap; word-break: break-word; font-size: 13px; max-height: 400px; overflow-y: auto; }
+.timeline-content code { background: rgba(255,255,255,.06); padding: 1px 5px; border-radius: 3px; font-size: 12px; }
+.timeline-content pre { background: rgba(0,0,0,.3); padding: 12px; border-radius: 6px; overflow-x: auto; margin: 8px 0; font-size: 12px; }
+.json-toggle { cursor: pointer; color: var(--accent); font-size: 12px; margin-left: 8px; }
+
+/* Pagination */
+.pagination { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 16px; }
+.pagination button { padding: 6px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); color: var(--text); cursor: pointer; font-size: 13px; }
+.pagination button:disabled { opacity: .4; cursor: default; }
+.pagination button:hover:not(:disabled) { border-color: var(--accent); }
+.pagination span { font-size: 13px; color: var(--text-dim); }
+
+/* Search results */
+.result-item { padding: 8px 12px; margin-bottom: 4px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); cursor: pointer; }
+.result-item:hover { border-color: var(--accent); }
+.result-item .ri-header { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-dim); margin-bottom: 4px; }
+.result-item .ri-preview { font-size: 13px; color: var(--text); }
+mark { background: rgba(210,153,34,.3); color: var(--orange); padding: 1px 3px; border-radius: 2px; }
+
+/* Loading */
+.loading { text-align: center; padding: 40px; color: var(--text-dim); }
+.error { color: var(--red); padding: 16px; text-align: center; }
+.empty { text-align: center; padding: 40px; color: var(--text-dim); }
+
+.tool-detail { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+.tool-detail summary { cursor: pointer; color: var(--accent); font-size: 12px; font-weight: 600; }
+.tool-detail pre { background: rgba(0,0,0,.3); padding: 8px; border-radius: 4px; overflow-x: auto; margin-top: 4px; font-size: 12px; max-height: 300px; overflow-y: auto; }
+
+.bar-chart { display: flex; gap: 4px; align-items: flex-end; height: 100px; margin: 12px 0; }
+.bar-chart .bar-group { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; }
+.bar-chart .bar-group:hover .bar { opacity: .8; }
+.bar-chart .bar-group.active .bar { background: var(--green); box-shadow: 0 0 8px rgba(63,185,80,.4); }
+.bar-chart .bar-group.active .bar-label { color: var(--green); font-weight: 600; }
+.bar-chart .bar { width: 100%; max-width: 60px; background: var(--accent); border-radius: 4px 4px 0 0; min-height: 4px; transition: height .3s; }
+.bar-chart .bar-label { font-size: 10px; color: var(--text-dim); text-align: center; word-break: break-all; max-width: 80px; line-height: 1.2; }
+
+.tool-calls-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.tool-calls-header .close-btn { cursor: pointer; color: var(--text-dim); font-size: 20px; line-height: 1; padding: 0 4px; user-select: none; }
+.tool-calls-header .close-btn:hover { color: var(--text); }
+
+.back-link { display: inline-block; margin-bottom: 12px; color: var(--accent); cursor: pointer; font-size: 13px; }
+.back-link:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <h1>◈ OpenCode Tracer</h1>
+    <nav>
+      <a class="active" data-view="dashboard">📊 Dashboard</a>
+      <a data-view="sessions">💬 Sessions</a>
+      <a data-view="search">🔍 Search</a>
+    </nav>
+  </aside>
+  <main class="main">
+
+    <div id="view-dashboard" class="view active"></div>
+    <div id="view-sessions" class="view"></div>
+    <div id="view-session" class="view"></div>
+    <div id="view-search" class="view"></div>
+
+  </main>
+</div>
+
+<script>
+const API = ''
+let state = { currentView: 'dashboard', sessionsPage: 1, searchQuery: '', selectedTool: null, toolCallsData: null, toolCallsTotal: 0, toolCallsFilter: '' }
+
+async function api(path) {
+  const r = await fetch(API + path)
+  if (!r.ok) throw new Error((await r.json()).error || r.statusText)
+  return r.json()
+}
+
+function $(id) { return document.getElementById(id) }
+function html(el, h) { el.innerHTML = h }
+function show(v) { document.querySelectorAll('.view').forEach(e => e.classList.remove('active')); const el = $(v); if (el) el.classList.add('active'); }
+function nav(v) { state.currentView = v; document.querySelectorAll('.sidebar nav a').forEach(a => a.classList.toggle('active', a.dataset.view === v)); show('view-' + v); render(); }
+
+document.querySelectorAll('.sidebar nav a').forEach(a => a.addEventListener('click', () => nav(a.dataset.view)));
+
+async function render() {
+  switch (state.currentView) {
+    case 'dashboard': renderDashboard(); break;
+    case 'sessions': renderSessions(); break;
+    case 'session': renderSession(); break;
+    case 'search': renderSearch(); break;
+  }
+}
+
+/* ── Dashboard ── */
+async function renderDashboard() {
+  const el = $('view-dashboard')
+  html(el, '<div class="loading">Loading dashboard...</div>')
+  try {
+    const d = await api('/api/dashboard')
+    const toolTotal = d.toolCalls.count
+    const sessionTotal = d.sessions.count
+    const msgTotal = d.messages.count
+
+    let toolBars = ''
+    const maxTool = d.toolBreakdown.length ? Math.max(...d.toolBreakdown.map(t => t.count)) : 1
+    d.toolBreakdown.forEach(t => {
+      const pct = (t.count / maxTool * 100)
+      const active = state.selectedTool && state.selectedTool.tool_name === t.tool_name ? ' active' : ''
+      toolBars += '<div class="bar-group' + active + '" onclick="selectTool(\'' + esc(t.tool_name) + '\')"><div class="bar" style="height:' + Math.max(4, pct) + 'px"></div><div class="bar-label">' + esc(t.tool_name) + ' (' + t.count + ')</div></div>'
+    })
+
+    let recentRows = d.recentSessions.map(s => {
+      const sid = esc(s.session_id)
+      return '<tr><td><a href="#" onclick="openSession(\'' + sid + '\');return false">' + short(sid, 32) + '</a></td><td>' + s.message_count + '</td><td>' + s.tool_call_count + '</td><td style="font-size:11px;color:var(--text-dim)">' + ago(s.last_ts) + '</td></tr>'
+    }).join('')
+
+    let agentRows = d.topAgents.map(a => '<tr><td><span class="badge badge-agent">' + esc(a.agent) + '</span></td><td>' + a.count + '</td></tr>').join('')
+
+    html(el, [
+      '<h2>Dashboard</h2>',
+      '<div class="stat-grid">',
+        '<div class="stat-card"><div class="num">' + sessionTotal + '</div><div class="label">Sessions</div></div>',
+        '<div class="stat-card"><div class="num">' + msgTotal + '</div><div class="label">Messages</div></div>',
+        '<div class="stat-card"><div class="num">' + toolTotal + '</div><div class="label">Tool Calls</div></div>',
+        '<div class="stat-card"><div class="num">' + d.toolBreakdown.length + '</div><div class="label">Tool Types</div></div>',
+      '</div>',
+      '<div class="card">',
+        '<h3>Tool Usage</h3>',
+        d.toolBreakdown.length ? '<div class="bar-chart">' + toolBars + '</div>' : '<div class="empty">No tool calls yet</div>',
+      '</div>',
+      '<div id="tool-calls-container"></div>',
+      '<div class="card">',
+        '<h3>Recent Sessions</h3>',
+        d.recentSessions.length ? '<table><thead><tr><th>Session</th><th>Messages</th><th>Tool Calls</th><th>Last Activity</th></tr></thead><tbody>' + recentRows + '</tbody></table>' : '<div class="empty">No sessions yet</div>',
+      '</div>',
+      '<div class="card">',
+        '<h3>Top Agents</h3>',
+        d.topAgents.length ? '<table><thead><tr><th>Agent</th><th>Messages</th></tr></thead><tbody>' + agentRows + '</tbody></table>' : '<div class="empty">No agents found</div>',
+      '</div>',
+    ].join('\n'))
+  } catch (e) {
+    html(el, '<div class="error">Error: ' + esc(e.message) + '</div>')
+  }
+  if (state.selectedTool) {
+    if (state.toolCallsData) {
+      renderToolCallsSection()
+    } else {
+      const container = $('tool-calls-container')
+      if (container) container.innerHTML = '<div class="card"><div class="loading">Loading tool calls...</div></div>'
+      try {
+        const tcResp = await api('/api/tool-calls?tool_name=' + encodeURIComponent(state.selectedTool.tool_name) + '&limit=200')
+        state.toolCallsData = tcResp.calls
+        state.toolCallsTotal = tcResp.total
+      } catch (e) {
+        state.toolCallsData = []
+        state.toolCallsTotal = 0
+      }
+      renderToolCallsSection()
+    }
+  }
+}
+
+function renderToolCallsSection() {
+  const container = $('tool-calls-container')
+  if (!container || !state.selectedTool || !state.toolCallsData) return
+  const filter = state.toolCallsFilter.toLowerCase()
+  const filtered = filter
+    ? state.toolCallsData.filter(c =>
+        (c.session_id || '').toLowerCase().includes(filter) ||
+        (c.call_id || '').toLowerCase().includes(filter) ||
+        (c.input || '').toLowerCase().includes(filter) ||
+        (c.output || '').toLowerCase().includes(filter)
+      )
+    : state.toolCallsData
+  const tool = state.selectedTool
+  container.innerHTML = [
+    '<div class="card">',
+      '<div class="tool-calls-header">',
+        '<h3>Tool Calls: ' + esc(tool.tool_name) + ' <span class="tool-calls-count" style="font-weight:400;color:var(--text-dim)">' + filtered.length + ' of ' + state.toolCallsTotal + '</span></h3>',
+        '<span class="close-btn" onclick="selectTool(null)">✕</span>',
+      '</div>',
+      '<div class="search-bar">',
+        '<input type="text" id="tool-calls-filter" placeholder="Filter by session, input, output..." value="' + esc(state.toolCallsFilter) + '" onkeyup="filterToolCalls(this.value)">',
+      '</div>',
+      filtered.length
+        ? '<div class="tool-calls-wrap" style="overflow-x:auto"><table><thead><tr><th>Session</th><th>Call ID</th><th>Input</th><th>Output</th><th>Time</th></tr></thead><tbody>' + buildToolCallRows(filtered) + '</tbody></table></div>' +
+          (state.toolCallsTotal > state.toolCallsData.length
+            ? '<div style="text-align:center;margin-top:8px;font-size:12px;color:var(--text-dim)">Showing ' + state.toolCallsData.length + ' of ' + state.toolCallsTotal + ' total. Use search to narrow down.</div>'
+            : '')
+        : '<div class="tool-calls-empty empty">No matching tool calls</div>',
+    '</div>',
+  ].join('\n')
+}
+
+/* ── Sessions ── */
+async function renderSessions() {
+  const el = $('view-sessions')
+  html(el, `
+    <h2>Sessions</h2>
+    <div class="search-bar">
+      <input type="text" id="sessions-search" placeholder="Search sessions..." value="${esc(state.searchQuery)}" onkeydown="if(event.key==='Enter'){state.searchQuery=this.value;state.sessionsPage=1;renderSessions()}">
+      <button onclick="state.searchQuery=document.getElementById('sessions-search').value;state.sessionsPage=1;renderSessions()">Search</button>
+    </div>
+    <div id="sessions-list"><div class="loading">Loading...</div></div>
+  `)
+  try {
+    const q = state.searchQuery
+    const data = await api(`/api/sessions?page=${state.sessionsPage}&limit=20${q ? '&q=' + encodeURIComponent(q) : ''}`)
+    let rows = data.sessions.map(s => {
+      const sid = esc(s.session_id)
+      return `<tr><td><a href="#" onclick="openSession('${sid}');return false">${short(sid, 48)}</a></td><td>${s.message_count}</td><td>${s.tool_call_count}</td><td style="font-size:11px;color:var(--text-dim)">${ago(s.first_ts)}</td><td style="font-size:11px;color:var(--text-dim)">${ago(s.last_ts)}</td></tr>`
+    }).join('')
+
+    let pager = ''
+    if (data.totalPages > 1) {
+      pager = `<div class="pagination">
+        <button ${state.sessionsPage <= 1 ? 'disabled' : ''} onclick="state.sessionsPage--;renderSessions()">‹ Prev</button>
+        <span>Page ${data.page} of ${data.totalPages} (${data.total} total)</span>
+        <button ${state.sessionsPage >= data.totalPages ? 'disabled' : ''} onclick="state.sessionsPage++;renderSessions()">Next ›</button>
+      </div>`
+    }
+
+    html($('sessions-list'),
+      data.sessions.length
+        ? `<table><thead><tr><th>Session ID</th><th>Messages</th><th>Tool Calls</th><th>First</th><th>Last</th></tr></thead><tbody>${rows}</tbody></table>${pager}`
+        : '<div class="empty">No sessions found</div>'
+    )
+  } catch (e) {
+    html($('sessions-list'), `<div class="error">Error: ${esc(e.message)}</div>`)
+  }
+}
+
+/* ── Session Detail ── */
+async function renderSession() {
+  const el = $('view-session')
+  const sid = state.currentSessionId
+  if (!sid) return nav('sessions')
+  html(el, `<a class="back-link" onclick="nav('sessions');return false">← Back to Sessions</a><div class="loading">Loading session...</div>`)
+  try {
+    const data = await api(`/api/sessions/${encodeURIComponent(sid)}`)
+    let items = ''
+
+    const all = []
+    data.messages.forEach(m => all.push({ type: 'message', ts: m.ts, data: m }))
+    data.tool_calls.forEach(tc => all.push({ type: 'tool', ts: tc.ts, data: tc }))
+    all.sort((a, b) => a.data.id - b.data.id || a.ts.localeCompare(b.ts))
+
+    all.forEach(item => {
+      if (item.type === 'message') {
+        const m = item.data
+        const cls = m.role === 'user' ? 'user' : m.role === 'assistant' ? 'assistant' : 'system'
+        const content = typeof m.content === 'string' ? esc(m.content) : highlightJSON(m.content)
+        items += `<div class="timeline-item message">
+          <div class="timeline-header">
+            <span class="timeline-role ${cls}">${esc(m.role)}${m.agent ? ' (' + esc(m.agent) + ')' : ''}</span>
+            <span class="timeline-ts">${ago(m.ts)}</span>
+          </div>
+          <div class="timeline-content">${content}</div>
+        </div>`
+      } else {
+        const tc = item.data
+        const inp = tc.input ? highlightJSON(tc.input) : '<em>none</em>'
+        const out = tc.output ? highlightJSON(tc.output) : '<em>none</em>'
+        items += `<div class="timeline-item tool">
+          <div class="timeline-header">
+            <span class="timeline-role tool">🛠 ${esc(tc.tool_name)}${tc.call_id ? ' <span style="font-size:11px;color:var(--text-dim);font-weight:400">#' + short(tc.call_id, 12) + '</span>' : ''}</span>
+            <span class="timeline-ts">${ago(tc.ts)}</span>
+          </div>
+          <details class="tool-detail">
+            <summary>Input</summary>
+            <pre>${inp}</pre>
+          </details>
+          <details class="tool-detail">
+            <summary>Output</summary>
+            <pre>${out}</pre>
+          </details>
+        </div>`
+      }
+    })
+
+    html(el, `
+      <a class="back-link" onclick="if(state.searchQuery){nav('search')}else{nav('sessions')};return false">← Back</a>
+      <h2 style="word-break:break-all;font-size:16px">${esc(sid)}</h2>
+      <div style="margin-bottom:16px">
+        <span class="badge badge-msg">${data.messages.length} messages</span>
+        <span class="badge badge-tool" style="margin-left:6px">${data.tool_calls.length} tool calls</span>
+      </div>
+      <div class="timeline">${items || '<div class="empty">No data in this session</div>'}</div>
+    `)
+  } catch (e) {
+    html(el, `<a class="back-link" onclick="nav('sessions');return false">← Back</a><div class="error">Error: ${esc(e.message)}</div>`)
+  }
+}
+
+function openSession(id) { state.currentSessionId = id; nav('session'); }
+
+/* ── Dashboard Tool Calls Selection ── */
+function selectTool(toolName) {
+  if (!toolName || (state.selectedTool && state.selectedTool.tool_name === toolName)) {
+    state.selectedTool = null
+    state.toolCallsData = null
+    state.toolCallsFilter = ''
+    renderDashboard()
+    return
+  }
+  state.selectedTool = { tool_name: toolName }
+  state.toolCallsData = null
+  state.toolCallsFilter = ''
+  renderDashboard()
+}
+
+function filterToolCalls(val) {
+  state.toolCallsFilter = val
+  const container = document.getElementById('tool-calls-container')
+  if (!container || !state.toolCallsData) return
+  const filter = val.toLowerCase()
+  const filtered = filter
+    ? state.toolCallsData.filter(c =>
+        (c.session_id || '').toLowerCase().includes(filter) ||
+        (c.call_id || '').toLowerCase().includes(filter) ||
+        (c.input || '').toLowerCase().includes(filter) ||
+        (c.output || '').toLowerCase().includes(filter)
+      )
+    : state.toolCallsData
+  const tbody = container.querySelector('tbody')
+  const countEl = container.querySelector('.tool-calls-count')
+  const emptyEl = container.querySelector('.tool-calls-empty')
+  if (countEl) { countEl.textContent = filtered.length + ' of ' + state.toolCallsTotal }
+  if (filtered.length) {
+    if (emptyEl) emptyEl.remove()
+    if (tbody) { tbody.innerHTML = buildToolCallRows(filtered) }
+  } else {
+    const wrap = container.querySelector('.tool-calls-wrap')
+    if (wrap) wrap.remove()
+    const searchBar = container.querySelector('.search-bar')
+    if (searchBar && !emptyEl) {
+      const div = document.createElement('div')
+      div.className = 'tool-calls-empty empty'
+      div.textContent = 'No matching tool calls'
+      searchBar.after(div)
+    }
+  }
+}
+
+function buildToolCallRows(calls) {
+  return calls.map(tc => {
+    const sid = esc(tc.session_id)
+    const inp = esc((tc.input || '').substring(0, 120))
+    const out = esc((tc.output || '').substring(0, 120))
+    return '<tr>' +
+      '<td><a href="#" onclick="openSession(\'' + sid + '\');return false">' + short(sid, 24) + '</a></td>' +
+      '<td style="font-size:11px;color:var(--text-dim)">' + short(esc(tc.call_id), 16) + '</td>' +
+      '<td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="' + esc(tc.input || '') + '">' + inp + '</td>' +
+      '<td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="' + esc(tc.output || '') + '">' + out + '</td>' +
+      '<td style="font-size:11px;color:var(--text-dim);white-space:nowrap">' + ago(tc.ts) + '</td>' +
+    '</tr>'
+  }).join('')
+}
+
+/* ── Search ── */
+async function renderSearch() {
+  const el = $('view-search')
+  html(el, `
+    <h2>Search</h2>
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Search messages, tool calls, sessions..." value="${esc(state.searchQuery)}" onkeydown="if(event.key==='Enter'){state.searchQuery=this.value;doSearch()}">
+      <button onclick="state.searchQuery=document.getElementById('search-input').value;doSearch()">Search</button>
+    </div>
+    <div id="search-results"></div>
+  `)
+  if (state.searchQuery) doSearch()
+}
+
+async function doSearch() {
+  const q = state.searchQuery.trim()
+  const el = $('search-results')
+  if (!q) { html(el, ''); return }
+  html(el, '<div class="loading">Searching...</div>')
+  try {
+    const data = await api(`/api/search?q=${encodeURIComponent(q)}`)
+    let htmlOut = ''
+    const re = new RegExp('(' + escRegex(q) + ')', 'gi')
+
+    function markText(t) {
+      if (typeof t !== 'string') t = JSON.stringify(t, null, 2)
+      return esc(t).replace(re, '<mark>$1</mark>')
+    }
+
+    if (data.messages.length) {
+      htmlOut += `<div class="card"><h3>Messages (${data.messages.length})</h3>`
+      data.messages.forEach(m => {
+        const preview = (m.content || '').substring(0, 300)
+        htmlOut += `<div class="result-item" onclick="openSession('${esc(m.session_id)}');return false">
+          <div class="ri-header"><span>${esc(m.session_id).substring(0, 32)}… <span class="badge badge-msg">${esc(m.role)}</span></span><span>${ago(m.ts)}</span></div>
+          <div class="ri-preview">${markText(preview)}</div>
+        </div>`
+      })
+      htmlOut += `</div>`
+    }
+
+    if (data.tool_calls.length) {
+      htmlOut += `<div class="card"><h3>Tool Calls (${data.tool_calls.length})</h3>`
+      data.tool_calls.forEach(tc => {
+        const preview = (tc.output || tc.input || '').substring(0, 300)
+        htmlOut += `<div class="result-item" onclick="openSession('${esc(tc.session_id)}');return false">
+          <div class="ri-header"><span>${esc(tc.session_id).substring(0, 32)}… <span class="badge badge-tool">${esc(tc.tool_name)}</span></span><span>${ago(tc.ts)}</span></div>
+          <div class="ri-preview">${markText(preview)}</div>
+        </div>`
+      })
+      htmlOut += `</div>`
+    }
+
+    if (!data.messages.length && !data.tool_calls.length) {
+      htmlOut = '<div class="empty">No results found</div>'
+    }
+
+    html(el, htmlOut)
+  } catch (e) {
+    html(el, `<div class="error">Error: ${esc(e.message)}</div>`)
+  }
+}
+
+/* ── Utilities ── */
+function esc(s) {
+  if (s === null || s === undefined) return ''
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')
+}
+
+function escRegex(s) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
+function short(s, n) {
+  return s && s.length > n ? s.substring(0, n) + '…' : s || ''
+}
+
+function ago(ts) {
+  if (!ts) return ''
+  const d = new Date(ts + 'Z')
+  if (isNaN(d.getTime())) { const p = Date.parse(ts); return p ? new Date(p).toLocaleString() : ts }
+  const sec = Math.floor((Date.now() - d.getTime()) / 1000)
+  if (sec < 5) return 'just now'
+  if (sec < 60) return sec + 's ago'
+  const min = Math.floor(sec / 60)
+  if (min < 60) return min + 'm ago'
+  const hr = Math.floor(min / 60)
+  if (hr < 24) return hr + 'h ago'
+  const day = Math.floor(hr / 24)
+  if (day < 7) return day + 'd ago'
+  return d.toLocaleDateString()
+}
+
+function highlightJSON(obj) {
+  if (obj === null || obj === undefined) return '<em>null</em>'
+  if (typeof obj === 'string') return esc(obj)
+  try { return esc(JSON.stringify(obj, null, 2)) } catch { return esc(String(obj)) }
+}
+
+render()
+</script>
+</body>
+</html>
