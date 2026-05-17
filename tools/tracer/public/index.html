@@ -112,6 +112,22 @@ mark { background: rgba(210,153,34,.3); color: var(--orange); padding: 1px 3px; 
 
 .back-link { display: inline-block; margin-bottom: 12px; color: var(--accent); cursor: pointer; font-size: 13px; }
 .back-link:hover { text-decoration: underline; }
+
+/* Overlay */
+.overlay { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,.6); align-items: center; justify-content: center; padding: 24px; }
+.overlay.open { display: flex; }
+.overlay-panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); max-width: 800px; width: 100%; max-height: 90vh; display: flex; flex-direction: column; box-shadow: 0 8px 32px rgba(0,0,0,.5); }
+.overlay-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+.overlay-header h3 { margin: 0; text-transform: none; letter-spacing: 0; font-size: 15px; color: var(--text); }
+.overlay-close { cursor: pointer; color: var(--text-dim); font-size: 22px; line-height: 1; padding: 0 4px; user-select: none; }
+.overlay-close:hover { color: var(--text); }
+.overlay-body { padding: 20px; overflow-y: auto; flex: 1; }
+.overlay-body .field { margin-bottom: 16px; }
+.overlay-body .field-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: .5px; font-weight: 600; margin-bottom: 4px; }
+.overlay-body .field-value { font-size: 13px; word-break: break-word; white-space: pre-wrap; }
+.overlay-body .field-value pre { background: rgba(0,0,0,.3); padding: 12px; border-radius: 6px; overflow-x: auto; font-size: 12px; max-height: 300px; overflow-y: auto; margin: 0; }
+.overlay-body .field-row { display: flex; gap: 16px; flex-wrap: wrap; }
+.overlay-body .field-row .field { flex: 1; min-width: 140px; }
 </style>
 </head>
 <body>
@@ -134,9 +150,19 @@ mark { background: rgba(210,153,34,.3); color: var(--orange); padding: 1px 3px; 
   </main>
 </div>
 
+<div id="overlay" class="overlay" onclick="if(event.target===this)closeOverlay()">
+  <div class="overlay-panel">
+    <div class="overlay-header">
+      <h3 id="overlay-title">Details</h3>
+      <span class="overlay-close" onclick="closeOverlay()">✕</span>
+    </div>
+    <div class="overlay-body" id="overlay-body"></div>
+  </div>
+</div>
+
 <script>
 const API = ''
-let state = { currentView: 'dashboard', sessionsPage: 1, searchQuery: '', selectedTool: null, toolCallsData: null, toolCallsTotal: 0, toolCallsFilter: '' }
+let state = { currentView: 'dashboard', sessionsPage: 1, searchQuery: '', selectedTool: null, toolCallsData: null, toolCallsTotal: 0, toolCallsFilter: '', detailItems: null, toolCallOverlayData: null }
 
 async function api(path) {
   const r = await fetch(API + path)
@@ -233,7 +259,7 @@ function renderToolCallsSection() {
   const container = $('tool-calls-container')
   if (!container || !state.selectedTool || !state.toolCallsData) return
   const filter = state.toolCallsFilter.toLowerCase()
-  const filtered = filter
+  state.toolCallOverlayData = filter
     ? state.toolCallsData.filter(c =>
         (c.session_id || '').toLowerCase().includes(filter) ||
         (c.call_id || '').toLowerCase().includes(filter) ||
@@ -241,6 +267,7 @@ function renderToolCallsSection() {
         (c.output || '').toLowerCase().includes(filter)
       )
     : state.toolCallsData
+  const filtered = state.toolCallOverlayData
   const tool = state.selectedTool
   container.innerHTML = [
     '<div class="card">',
@@ -314,35 +341,35 @@ async function renderSession() {
     data.tool_calls.forEach(tc => all.push({ type: 'tool', ts: tc.ts, data: tc }))
     all.sort((a, b) => a.data.id - b.data.id || a.ts.localeCompare(b.ts))
 
-    all.forEach(item => {
+    state.detailItems = []
+    all.forEach((item, idx) => {
+      state.detailItems.push({ type: item.type, data: item.data })
       if (item.type === 'message') {
         const m = item.data
         const cls = m.role === 'user' ? 'user' : m.role === 'assistant' ? 'assistant' : 'system'
-        const content = typeof m.content === 'string' ? esc(m.content) : highlightJSON(m.content)
-        items += `<div class="timeline-item message">
+        const contentPreview = typeof m.content === 'string' ? esc(m.content.substring(0, 500)) : highlightJSON(m.content)
+        items += `<div class="timeline-item message" onclick="showDetailItem(${idx})" style="cursor:pointer">
           <div class="timeline-header">
             <span class="timeline-role ${cls}">${esc(m.role)}${m.agent ? ' (' + esc(m.agent) + ')' : ''}</span>
             <span class="timeline-ts">${ago(m.ts)}</span>
           </div>
-          <div class="timeline-content">${content}</div>
+          <div class="timeline-content">${contentPreview}${typeof m.content === 'string' && m.content.length > 500 ? '<span style="color:var(--accent);font-size:12px;display:block;margin-top:4px">▼ click to view full</span>' : ''}</div>
         </div>`
       } else {
         const tc = item.data
-        const inp = tc.input ? highlightJSON(tc.input) : '<em>none</em>'
-        const out = tc.output ? highlightJSON(tc.output) : '<em>none</em>'
-        items += `<div class="timeline-item tool">
+        const inpPreview = tc.input ? highlightJSON(tc.input).substring(0, 300) : '<em>none</em>'
+        const outPreview = tc.output ? highlightJSON(tc.output).substring(0, 300) : '<em>none</em>'
+        items += `<div class="timeline-item tool" onclick="showDetailItem(${idx})" style="cursor:pointer">
           <div class="timeline-header">
             <span class="timeline-role tool">🛠 ${esc(tc.tool_name)}${tc.call_id ? ' <span style="font-size:11px;color:var(--text-dim);font-weight:400">#' + short(tc.call_id, 12) + '</span>' : ''}</span>
             <span class="timeline-ts">${ago(tc.ts)}</span>
           </div>
-          <details class="tool-detail">
-            <summary>Input</summary>
-            <pre>${inp}</pre>
-          </details>
-          <details class="tool-detail">
-            <summary>Output</summary>
-            <pre>${out}</pre>
-          </details>
+          <div class="tool-detail" style="border-top:1px solid var(--border);padding-top:8px">
+            <div style="font-size:11px;color:var(--text-dim);margin-bottom:4px">Input:</div>
+            <pre style="margin:0;font-size:12px;max-height:100px;overflow:hidden">${inpPreview}</pre>
+            <div style="font-size:11px;color:var(--text-dim);margin:8px 0 4px">Output:</div>
+            <pre style="margin:0;font-size:12px;max-height:100px;overflow:hidden">${outPreview}</pre>
+          </div>
         </div>`
       }
     })
@@ -383,7 +410,7 @@ function filterToolCalls(val) {
   const container = document.getElementById('tool-calls-container')
   if (!container || !state.toolCallsData) return
   const filter = val.toLowerCase()
-  const filtered = filter
+  state.toolCallOverlayData = filter
     ? state.toolCallsData.filter(c =>
         (c.session_id || '').toLowerCase().includes(filter) ||
         (c.call_id || '').toLowerCase().includes(filter) ||
@@ -391,6 +418,7 @@ function filterToolCalls(val) {
         (c.output || '').toLowerCase().includes(filter)
       )
     : state.toolCallsData
+  const filtered = state.toolCallOverlayData
   const tbody = container.querySelector('tbody')
   const countEl = container.querySelector('.tool-calls-count')
   const emptyEl = container.querySelector('.tool-calls-empty')
@@ -412,12 +440,13 @@ function filterToolCalls(val) {
 }
 
 function buildToolCallRows(calls) {
-  return calls.map(tc => {
+  return calls.map((tc, i) => {
     const sid = esc(tc.session_id)
     const inp = esc((tc.input || '').substring(0, 120))
     const out = esc((tc.output || '').substring(0, 120))
-    return '<tr>' +
-      '<td><a href="#" onclick="openSession(\'' + sid + '\');return false">' + short(sid, 24) + '</a></td>' +
+    const idx = '(state.toolCallOverlayData||[]).findIndex(t=>t===state.toolCallsData[' + i + '])'
+    return '<tr onclick="showToolCallOverlay(state.toolCallOverlayData[' + i + '])" style="cursor:pointer">' +
+      '<td><a href="#" onclick="event.stopPropagation();openSession(\'' + sid + '\');return false">' + short(sid, 24) + '</a></td>' +
       '<td style="font-size:11px;color:var(--text-dim)">' + short(esc(tc.call_id), 16) + '</td>' +
       '<td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="' + esc(tc.input || '') + '">' + inp + '</td>' +
       '<td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="' + esc(tc.output || '') + '">' + out + '</td>' +
@@ -523,6 +552,55 @@ function highlightJSON(obj) {
   if (obj === null || obj === undefined) return '<em>null</em>'
   if (typeof obj === 'string') return esc(obj)
   try { return esc(JSON.stringify(obj, null, 2)) } catch { return esc(String(obj)) }
+}
+
+/* ── Overlay ── */
+function showOverlay(title, bodyHtml) {
+  document.getElementById('overlay-title').textContent = title
+  document.getElementById('overlay-body').innerHTML = bodyHtml
+  document.getElementById('overlay').classList.add('open')
+}
+
+function closeOverlay() {
+  document.getElementById('overlay').classList.remove('open')
+}
+
+function showMessageOverlay(m) {
+  const content = typeof m.content === 'string' ? esc(m.content) : highlightJSON(m.content)
+  const isJson = typeof m.content !== 'string' && m.content !== null
+  showOverlay('Message — ' + esc(m.role),
+    '<div class="field-row">' +
+      '<div class="field"><div class="field-label">Role</div><div class="field-value">' + esc(m.role) + '</div></div>' +
+      (m.agent ? '<div class="field"><div class="field-label">Agent</div><div class="field-value">' + esc(m.agent) + '</div></div>' : '') +
+      '<div class="field"><div class="field-label">Session</div><div class="field-value" style="font-size:12px">' + esc(m.session_id) + '</div></div>' +
+      '<div class="field"><div class="field-label">Time</div><div class="field-value">' + (m.ts || '') + '</div></div>' +
+    '</div>' +
+    '<div class="field"><div class="field-label">Content' + (isJson ? ' (parsed JSON)' : '') + '</div><div class="field-value"><pre>' + content + '</pre></div></div>'
+  )
+}
+
+function showDetailItem(idx) {
+  const item = state.detailItems && state.detailItems[idx]
+  if (!item) return
+  if (item.type === 'message') showMessageOverlay(item.data)
+  else showToolCallOverlay(item.data)
+}
+
+function showToolCallOverlay(tc) {
+  const inp = tc.input ? highlightJSON(tc.input) : '<em>none</em>'
+  const out = tc.output ? highlightJSON(tc.output) : '<em>none</em>'
+  const inpIsJson = tc.input !== null && typeof tc.input !== 'string'
+  const outIsJson = tc.output !== null && typeof tc.output !== 'string'
+  showOverlay('Tool Call — ' + esc(tc.tool_name),
+    '<div class="field-row">' +
+      '<div class="field"><div class="field-label">Tool</div><div class="field-value">' + esc(tc.tool_name) + '</div></div>' +
+      (tc.call_id ? '<div class="field"><div class="field-label">Call ID</div><div class="field-value" style="font-size:12px">' + esc(tc.call_id) + '</div></div>' : '') +
+      '<div class="field"><div class="field-label">Session</div><div class="field-value" style="font-size:12px">' + esc(tc.session_id) + '</div></div>' +
+      '<div class="field"><div class="field-label">Time</div><div class="field-value">' + (tc.ts || '') + '</div></div>' +
+    '</div>' +
+    '<div class="field"><div class="field-label">Input' + (inpIsJson ? ' (parsed JSON)' : '') + '</div><div class="field-value"><pre>' + inp + '</pre></div></div>' +
+    '<div class="field"><div class="field-label">Output' + (outIsJson ? ' (parsed JSON)' : '') + '</div><div class="field-value"><pre>' + out + '</pre></div></div>'
+  )
 }
 
 render()
