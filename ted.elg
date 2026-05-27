@@ -1,0 +1,666 @@
+turning on ted
+[26804 4107067904][26 May 17:40:25] [TE_TRACE]: daemon starting
+[26804 4107067904][26 May 17:40:25] [TE_TRACE]: Environment variable TE_UPDATES_HOME does not exists. setting it to /var/log/files_repository
+[26804 4107067904][26 May 17:40:25] [TE_TRACE]: Don't ask Update file repository to save some version
+[26804 4107067904][26 May 17:40:25] [TE_TRACE]: register to AMW policy install and TED_RECONF
+[26804 4107067904][26 May 17:40:25]  [TE (TD::Surprise)] te::Daemon::StartApplicationSpecifics: REDUNDANT CODE: sha256 digest was already added
+[26804 4107067904][26 May 17:40:25]  [TE (TD::Surprise)] te::UpdateableFilesManagerBase::GetUpdatedFilePath: Can't get latest revision for file type File Types Map with UID 779739FA-FDB7-473A-9688-8EFAF60A05C2, the file does not exist in the list
+[26804 4107067904][26 May 17:40:25]  [TE (TD::Surprise)] te::Daemon::CopyLatestFileTypesXmltoTeUpdateDir: xml file type is missing, nothing to copy.
+[26804 4107067904][26 May 17:40:25]  [TE (TD::Surprise)] te::UpdateableFilesManagerBase::GetUpdatedFilePath: Can't get latest revision for file type File Classification Map with UID cfbfc4b0-0696-11e4-9191-0800200c9a66, the file does not exist in the list
+[26804 4107067904][26 May 17:40:25]  [TE (TD::Surprise)] te::Daemon::CopyLatestFileClassificationConftoTeUpdateDir: file classification conf is missing, nothing to copy.
+[26804 4107067904][26 May 17:40:25] [TE_SM]: SchemaReader: in readProxySettings - failed getting proxy_settings object
+[26804 4107067904][26 May 17:40:25] [TE_SM]: SchemaReader: in fetchData - failed getting proxy_settings
+[26804 4107067904][26 May 17:40:25] [TE_SM]: tpConfClient is on Traditional mode - using old schema reader
+[26804 4107067904][26 May 17:40:25]  [TE (TD::Surprise)] te::UpdateableFilesManagerBase::FindFileLastRevision: Can't get latest revision for file type CRM Package with UID 765659DC-1BD4-4FC0-B270-F32AA0B48714, the file does not exist in the list
+[26804 4107067904][26 May 17:40:25]  [TE (TD::Surprise)] te::UpdateableFilesManagerBase::FindFileLastRevision: Can't get latest revision for file type CRM Package with UID 765659DC-1BD4-4FC0-B270-F32AA0B48714, the file does not exist in the list
+[26804 4107067904][26 May 17:40:25]  [TE (TD::Surprise)] te::UpdateableFilesManagerBase::FindFileLastRevision: Can't get latest revision for file type CRM Package with UID 765659DC-1BD4-4FC0-B270-F32AA0B48714, the file does not exist in the list
+[26804 4107067904][26 May 17:40:25]  [TE (TD::Surprise)] te::UpdateableFilesManagerBase::FindFileLastRevision: Can't get latest revision for file type CRM Package with UID 765659DC-1BD4-4FC0-B270-F32AA0B48714, the file does not exist in the list
+[26804 4107067904][26 May 17:40:25]  [TE (TD::Surprise)] te::VmResources::ClearVmEnvironment: executing /opt/CPsuite-R82/fw1/teCurrentPack/tedCleanEnv.sh failed
+[26804 4107067904][26 May 17:40:26]  [TE (TD::Surprise)] te::Utils::readFileToJson: File does not exists /opt/CPsuite-R82/fw1/teCurrentPack/file_dir/reclassify_override.json
+[26804 4107067904][26 May 17:40:26]  [TE (TD::Surprise)] te::ClassifierInvestigator::DoInit: could not read  /opt/CPsuite-R82/fw1/teCurrentPack/file_dir/reclassify_override.json
+[26804 4107067904][26 May 17:40:26]  [TE (TD::Surprise)] te::SuspActSection::AdditionalInits: Failed to open file : /opt/CPsuite-R82/fw1/teCurrentPack/file_dir/SuspiciousActivitiesHighlights.txt
+[26804 4107067904][26 May 17:40:26] [TE_TRACE]: init TE specific features
+[26804 4107067904][26 May 17:40:26] [TE_TRACE]: initialize contract manager
+[26804 4107067904][26 May 17:40:26] [TE_TRACE]: start monitoring
+[26804 4107067904][26 May 17:40:26]  [TE (TD::Surprise)] te::DatabaseManager::CreateIndex: Failed to create index CREATE INDEX IF NOT EXISTS date_and_hits_index ON VerdictsTable(date_and_hits ASC);
+[26804 4107067904][26 May 17:40:26]  [TE (TD::Surprise)] te::DatabaseManager::AddDateAndHitsIndex: Failed to create index, reinitializing the database
+[26804 4107067904][26 May 17:40:26] [TE_TRACE]: Database File successfully deleted: ted_local_db
+[26804 4107067904][26 May 17:40:26]  [TE (TD::Critical)] te::DatabaseManager::CreateNewDatabase: New Database was created.
+[26804 4107067904][26 May 17:40:26]  [TE (TD::Surprise)] te::Utils::GetInterfaceMacAddr: ioctl() failed
+[26804 4107067904][26 May 17:40:26]  [TE (TD::Surprise)] te::Utils::readFileToJson: File does not exists /opt/CPsuite-R82/fw1/conf/te_api_keys.conf
+[26804 4107067904][26 May 17:40:26]  [TE (TD::Surprise)] te::Utils::readFileToJson: File does not exists /opt/CPsuite-R82/fw1/conf/te_jwt_keys.conf
+[26804 4107067904][26 May 17:40:26]  [TE (TD::Surprise)] te::JWTConsumer::GetAPIKeys: Failed to read /opt/CPsuite-R82/fw1/conf/te_jwt_keys.conf as json
+[26804 4107067904][26 May 17:40:27] [TE_TRACE]: daemon reconf (FW1)
+[26804 4107067904][26 May 17:40:27] [TE_SM]: SchemaReader: in readProxySettings - failed getting proxy_settings object
+[26804 4107067904][26 May 17:40:27] [TE_SM]: SchemaReader: in fetchData - failed getting proxy_settings
+[26804 4107067904][26 May 17:40:27]  [TE_TRACE (TD::Important)] te::URLInvestigator::DoReconf: proxy is not set
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::AddKavCriteria::LinkScanengine: can't find temain linux version
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::AddKavCriteria::ShouldAdd: failed linking the right scanengine
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::AdvisoryInvestigator::AddAdvisor: Failed to init advisor BD
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::AdvisoryInvestigator::PrepareAllAdvisors: Failed to prepare/remove BD advisor
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::UpdateableFilesManagerBase::FindFileLastRevision: Can't get latest revision for file type Exe_Analyzer with UID 82727f8a-55ef-4b14-9658-08fd4e9e6996, the file does not exist in the list
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::UpdateableFilesManagerBase::FindFileLastRevision: Can't get latest revision for file type Exe_Analyzer with UID 89186e01-9879-459c-be39-feadaa1d7fb3, the file does not exist in the list
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::Utils::readFileToJson: File does not exists /static/ifi_infra_src/config/server_config.json
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::TedIFIAdvisor::getConnectorIP: Failed to read ifi server config file
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::TedIFIAdvisor::getConnectorIP: failed getting ipaddress
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::Utils::readFileToJson: File does not exists /static/ifi_infra_src/config/server_config.json
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::TedIFIAdvisor::getConnectorPort: Failed to read ifi server config file
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::TedIFIAdvisor::getConnectorPort: failed getting port
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::TedIFIAdvisor::Init: TEDIFI revision is 0, stopping init process
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::AdvisoryInvestigator::AddAdvisor: Failed to init advisor TEDIFI
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::Utils::readFileToJson: File does not exists /static/ifi_infra_src/config/server_config.json
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::TedIFIAdvisor::getConnectorPort: Failed to read ifi server config file
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::TedIFIAdvisor::getConnectorPort: failed getting port
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::EngineHttpConnector::forcefullyTerminateServer: CpSystem() failed for cmd: fuser -k 12563/tcp, exitCode= 1
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::EngineHttpConnector::forcefullyTerminateServer: CpSystem() failed for cmd: pkill -9 ifiPython3, exitCode= 1
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::AdvisoryInvestigator::PrepareAllAdvisors: Failed to prepare/remove TEDIFI advisor
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::DllSideLoadingAdvisor::ReadConf: Error, dll_side_loading_map.json file is missing in path
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::AdvisoryInvestigator::AddAdvisor: Failed to init advisor DLL_SIDE_LOADING
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::AdvisoryInvestigator::PrepareAllAdvisors: Failed to prepare/remove DLL_SIDE_LOADING advisor
+[26804 4107067904][26 May 17:40:27]  [TE_TRACE (TD::Important)] te::EmbeddedFilesAnalyzerInvestigator::DoReconf: proxy is not set
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::UpdateableFilesManagerBase::FindFileLastRevision: Can't get latest revision for file type Exe_Analyzer with UID 390183b9-6eb7-4135-9ac4-76de08ff3387, the file does not exist in the list
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::ExeAnalyzerDownloader::LoadUpdatedVer: no revision available from UpdateableFilesRepository: got 0
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::ExeAnalyzerDownloader::LoadUpdatedVer: no revision available from UpdateableFilesRepository: got 0
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::UpdateableFilesManagerBase::GetUpdatedFileDir: Can't get latest revision for file type JAVA with UID 515bfdd7-1d15-4d41-878f-8dee7c23008b, the file does not exist in the list
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::AddKavCriteria::LinkScanengine: can't find temain linux version
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::AddKavCriteria::ShouldAdd: failed linking the right scanengine
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::AdvisoryInvestigator::AddAdvisor: Failed to init advisor BD
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::AdvisoryInvestigator::PrepareAllAdvisors: Failed to prepare/remove BD advisor
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::Utils::readFileToJson: File does not exists /static/ifi_infra_src/config/server_config.json
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::TedIFIAdvisor::getConnectorIP: Failed to read ifi server config file
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::TedIFIAdvisor::getConnectorIP: failed getting ipaddress
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::Utils::readFileToJson: File does not exists /static/ifi_infra_src/config/server_config.json
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::TedIFIAdvisor::getConnectorPort: Failed to read ifi server config file
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::TedIFIAdvisor::getConnectorPort: failed getting port
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::TedIFIAdvisor::Init: TEDIFI revision is 0, stopping init process
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::AdvisoryInvestigator::AddAdvisor: Failed to init advisor TEDIFI
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::Utils::readFileToJson: File does not exists /static/ifi_infra_src/config/server_config.json
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::TedIFIAdvisor::getConnectorPort: Failed to read ifi server config file
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::TedIFIAdvisor::getConnectorPort: failed getting port
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::EngineHttpConnector::forcefullyTerminateServer: CpSystem() failed for cmd: fuser -k 12563/tcp, exitCode= 1
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::EngineHttpConnector::forcefullyTerminateServer: CpSystem() failed for cmd: pkill -9 ifiPython3, exitCode= 1
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::AdvisoryInvestigator::PrepareAllAdvisors: Failed to prepare/remove TEDIFI advisor
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::DllSideLoadingAdvisor::ReadConf: Error, dll_side_loading_map.json file is missing in path
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::AdvisoryInvestigator::AddAdvisor: Failed to init advisor DLL_SIDE_LOADING
+[26804 4107067904][26 May 17:40:27]  [TE (TD::Surprise)] te::AdvisoryInvestigator::PrepareAllAdvisors: Failed to prepare/remove DLL_SIDE_LOADING advisor
+[26804 4107067904][26 May 17:40:27] [TE_TRACE]: Don't ask Update file repository to save some version
+[26804 4107067904][26 May 17:40:30] [TE_TRACE]: Starting periodic update process
+[26804 4107067904][26 May 17:40:35] [TE_TRACE]: will not proceed updating the engine because not update flow
+[26804 4107067904][26 May 17:40:40] [TE_TRACE]: Engine update package has been downloaded. Starting upgrade 
+[26804 4107067904][26 May 17:40:50] [TE_TRACE]: Upgrade is needed, current major version is: 60 Next major version is: 60 current minor version is: 990000706 Next minor version is: 990002500
+[26804 4107067904][26 May 17:40:51] [TE_TRACE]: called to notify the report to the cloud is done (or not needed)
+[26804 4107067904][26 May 17:41:26] [TE_TRACE]: Starting licenses refreshment 
+[26804 4107067904][26 May 17:41:27] [TE_TRACE]: Starting periodic update process
+[26804 4107067904][26 May 17:41:51] [TE_TRACE]: Database File successfully deleted: ted_local_db
+[26804 4107067904][26 May 17:41:51]  [TE (TD::Critical)] te::DatabaseManager::CreateNewDatabase: New Database was created.
+[26804 4107067904][26 May 17:41:51] [TE_TRACE]: Local Cache cleared
+[26804 4107067904][26 May 17:42:27]  [TE (TD::Surprise)] te::UpdateableFilesManagerBase::FindFileLastRevision: Can't get latest revision for file type CRM Package with UID 765659DC-1BD4-4FC0-B270-F32AA0B48714, the file does not exist in the list
+[26804 4107067904][26 May 17:42:28]  [TE (TD::Surprise)] te::UpdateableFilesManagerBase::FindFileLastRevision: Can't get latest revision for file type CRM Package with UID 765659DC-1BD4-4FC0-B270-F32AA0B48714, the file does not exist in the list
+[26804 4107067904][26 May 17:42:29]  [TE (TD::Surprise)] te::UpdateableFilesManagerBase::FindFileLastRevision: Can't get latest revision for file type CRM Package with UID 765659DC-1BD4-4FC0-B270-F32AA0B48714, the file does not exist in the list
+[26804 4107067904][26 May 17:42:49]  [TE_IS_TRACE (TD::All)] te_is::SocketApiServer::HandleDataEvent: got on conn_id: 3 data:
+(
+	:connection (
+		:src_ip (127.0.0.1)
+		:src_port ()
+		:dst_ip (127.0.0.1)
+		:dst_port (30580)
+		:protocol (6)
+	)
+	:meta_data (
+		:file_orig_name (eicar.com.txt.doc)
+		:file_path ("/var/log/mal_files/eicar.com.txt.doc")
+		:file_type (doc)
+		:file_len (0)
+		:protocol (http)
+		:rule_id (1)
+		:free_text ("(te_add_file)")
+		:should_track (1)
+		:malware_rule_id ()
+		:scope_ip ()
+		:conn_id ()
+		:session_id ()
+		:instance_id ()
+		:investigation_path (PATH_TE)
+		:cdir (2)
+		:forced_file_type ()
+		:sand_blast_forensics (0)
+		:internet_access (0)
+		:save_json_path ()
+		:save_mal_events_path ()
+		:av_deep_scan ()
+		:av_ifi ()
+		:predefined_images ()
+		:emulation_params ()
+	)
+	:http_data (
+		:url ()
+	)
+	:smtp_data (
+		:to ()
+		:from ()
+		:subject ()
+		:body_path ()
+	)
+)
+
+[26804 4107067904][26 May 17:42:49] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} Handling new file "eicar.com.txt.doc", Path: /var/log/mal_files/eicar.com.txt.doc, rule_number = 1, rule name =  , investigation_path = PATH_TE
+[26804 4107067904][26 May 17:42:49] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'system state' (phase: 'prepare') EP RefCount: 4
+[26804 4107067904][26 May 17:42:49] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'system state' reporting back (status: done)
+[26804 4107067904][26 May 17:42:49] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'url prepare handler' (phase: 'prepare') EP RefCount: 4
+[26804 4107067904][26 May 17:42:49] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'url prepare handler' reporting back (status: done)
+[26804 4107067904][26 May 17:42:49] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'classifier' (phase: 'prepare') EP RefCount: 4
+[26804 4107067904][26 May 17:42:49] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'classifier' reporting back (status: done)
+[26804 4107067904][26 May 17:42:49] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'policy' (phase: 'prepare') EP RefCount: 4
+[26804 4107067904][26 May 17:42:49] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} adding image '5e5de275-a103-4f67-b55b-47532918fa59' for emulation
+[26804 4107067904][26 May 17:42:49] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} adding image 'e50e99f3-5963-4573-af9e-e3f4750b55e2' for emulation
+[26804 4107067904][26 May 17:42:49] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'policy' reporting back (status: done)
+[26804 4107067904][26 May 17:42:49] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'file' (phase: 'prepare') EP RefCount: 4
+[26804 4107067904][26 May 17:42:49] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'file' reporting back (status: done)
+[26804 4107067904][26 May 17:42:49] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'prepare persistency' (phase: 'prepare') EP RefCount: 4
+[26804 4107067904][26 May 17:42:49] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'prepare persistency' reporting back (status: done)
+[26804 4107067904][26 May 17:42:49] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'contract' (phase: 'prepare') EP RefCount: 8
+[26804 4107067904][26 May 17:42:49] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'contract' reporting back (status: done)
+[26804 4107067904][26 May 17:42:49] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'cache inquirer' (phase: 'prepare') EP RefCount: 8
+[26804 4107067904][26 May 17:42:49] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'cache inquirer' reporting back (status: done)
+[26804 4107067904][26 May 17:42:49] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} path in ep: in response data: 
+[26804 4107067904][26 May 17:42:49] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} Reporting back action: unknown; Confidence: 0; InvestigationPath: PATH_TE
+[26804 4107067904][26 May 17:42:49]  [TE_IS_TRACE (TD::All)] te_is::SocketApiServer::Transmit: transmit on conn_id: 3 data:
+(
+	:event_id ("{9F18EBE7-AB1C-8747-8B92-014FCF769C03}")
+	:action (unknown)
+	:confidence (none)
+	:done (0)
+	:file_path ("/var/log/mal_files/eicar.com.txt.doc")
+	:md5_string (44d88612fea8a8f36de82e1278abb02f)
+	:investigation_path (PATH_TE)
+	:additional_data ()
+	:body_path ()
+)
+
+[26804 4107067904][26 May 17:42:49] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'duplicate' (phase: 'processing') EP RefCount: 6
+[26804 4107067904][26 May 17:42:49] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'duplicate' reporting back (status: done)
+[26804 4107067904][26 May 17:42:49] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'url handler' (phase: 'processing') EP RefCount: 7
+[26804 4107067904][26 May 17:42:49] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'url handler' reporting back (status: done)
+[26804 4107067904][26 May 17:42:49] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'trusted source' (phase: 'processing') EP RefCount: 7
+[26804 4107067904][26 May 17:42:49] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} url is empty, don't check in white domains
+[26804 4107067904][26 May 17:42:49] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'trusted source' reporting back (status: done)
+[26804 4107067904][26 May 17:42:49] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'advisory' (phase: 'processing') EP RefCount: 7
+[26804 4107067904][26 May 17:42:49]  [TE (TD::Surprise)] te::StaticMacroAnalyzerPythonProtocol::DataReceived: Python unexpected output: /opt/CPsuite-R82/fw1/teCurrentPack/python_scripts/ChangePythonPath.sh: line 10: /PythonPack39_64/bin/python3: No such file or directory
+
+[26804 4107067904][26 May 17:42:49]  [TE (TD::Surprise)] te::StaticAnalysisProtocol::DataReceived: StaticAnalysisProtocol waiting for pid but received /opt/CPsuite-R82/fw1/teCurrentPack/SA_PythonWrapper.sh: line 15: /PythonPack39_64/bin/python3: No such file or directory
+
+[26804 4107067904][26 May 17:42:50] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'advisory' reporting back (status: done)
+[26804 4107067904][26 May 17:42:50] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} path in ep: in response data: 
+[26804 4107067904][26 May 17:42:50] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} Done with file; Reporting back action: drop; Confidence: 3; InvestigationPath: PATH_TE
+[26804 4107067904][26 May 17:42:50]  [TE_IS_TRACE (TD::All)] te_is::SocketApiServer::Transmit: transmit on conn_id: 3 data:
+(
+	:event_id ("{9F18EBE7-AB1C-8747-8B92-014FCF769C03}")
+	:action (drop)
+	:confidence (high)
+	:done (1)
+	:file_path ("/var/log/mal_files/eicar.com.txt.doc")
+	:md5_string (44d88612fea8a8f36de82e1278abb02f)
+	:investigation_path (PATH_TE)
+	:additional_data ()
+	:body_path ()
+)
+
+[26804 4107067904][26 May 17:42:50] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'ml decider express' (phase: 'processing') EP RefCount: 9
+[26804 4107067904][26 May 17:42:50] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'ml decider express' reporting back (status: done)
+[26804 4107067904][26 May 17:42:50] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'file analyzer' (phase: 'processing') EP RefCount: 9
+[26804 4107067904][26 May 17:42:50] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'file analyzer' reporting back (status: done)
+[26804 4107067904][26 May 17:42:50] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'domain threshold' (phase: 'processing') EP RefCount: 9
+[26804 4107067904][26 May 17:42:50] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'domain threshold' reporting back (status: done)
+[26804 4107067904][26 May 17:42:50] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'Web Emulation phase1' (phase: 'processing') EP RefCount: 9
+[26804 4107067904][26 May 17:42:50] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'Web Emulation phase1' reporting back (status: done)
+[26804 4107067904][26 May 17:42:50] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'Web Emulation phase2' (phase: 'processing') EP RefCount: 9
+[26804 4107067904][26 May 17:42:50] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'Web Emulation phase2' reporting back (status: done)
+[26804 4107067904][26 May 17:42:50] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'emulator' (phase: 'processing') EP RefCount: 9
+[26804 4107067904][26 May 17:42:50] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'emulator' reporting back (status: done)
+[26804 4107067904][26 May 17:42:50] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'cloud emulation' (phase: 'processing') EP RefCount: 9
+[26804 4107067904][26 May 17:42:50] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} uploaded to 99.80.93.100. (cloud emulation)
+[26804 4107067904][26 May 17:42:53] [TE_TRACE]: daemon end
+[26804 4107067904][26 May 17:42:53] [TE_TRACE]: fini TE specific features
+[26804 4107067904][26 May 17:42:53] [TE_TRACE]: stop monitoring
+[26804 4107067904][26 May 17:42:53] [TE_TRACE]: unregister to AMW policy install and TED_RECONF
+[26804 4107067904][26 May 17:42:53]  [TE (TD::Surprise)] te::Emulation::VMloader::ManageKernelHelpers: stop with refcnt 0
+cleaning up ted environment
+going to run /opt/CPsuite-R82/fw1/teCurrentPack/tedKvmModules.sh stop
+going to run /opt/CPsuite-R82/fw1/te_file_analyzer/te_analyze_fini.sh
+FileAnalyzerRemoveMount: about to un-mount /opt/CPsuite-R82/fw1/te_file_analyzer/opt/CPsuite-R82/fw1/tmp
+FileAnalyzerRemoveMount: about to un-mount /opt/CPsuite-R82/fw1/te_file_analyzer/proc
+FileAnalyzerRemoveMount: about to un-mount /opt/CPsuite-R82/fw1/te_file_analyzer/sys
+going to run /opt/CPsuite-R82/fw1/te_file_analyzer/aspose_server_jail_prepare.sh clean
+jre path is /opt/CPsuite-R82/fw1/te_file_analyzer/jre
+aspose jail - clean start
+umount: /var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/opt/CPsuite-R82/fw1/tmp/te: mountpoint not found
+umount: /var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/var/log/opt/CPsuite-R82/fw1/tmp/te: mountpoint not found
+umount: /var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/proc: mountpoint not found
+umount: /var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/lib: mountpoint not found
+umount: /var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/sys: mountpoint not found
+umount: /var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/bin: mountpoint not found
+umount: /var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/usr/share/fonts: mountpoint not found
+umount: /var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/etc/fonts: mountpoint not found
+umount: /var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/var/log/files_repository/Java/515bfdd7-1d15-4d41-878f-8dee7c23008b: mountpoint not found
+umount: /var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/opt/CPsuite-R82/fw1/te_file_analyzer/jre: mountpoint not found
+umount: /var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/opt/CPsuite-R82/fw1/te_file_analyzer/aspose_jars: mountpoint not found
+rm: cannot remove '/var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/opt/CPsuite-R82/fw1/te_file_analyzer/aspose_jre': No such file or directory
+rm: cannot remove '/var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/opt/CPsuite-R82/fw1/te_file_analyzer/log_config.properties': No such file or directory
+rm: cannot remove '/var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/opt/CPsuite-R82/fw1/te_java_jre': No such file or directory
+umount: /var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/var/log/dump/usermode: mountpoint not found
+remove with rmdir: /var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/proc
+rmdir: failed to remove '/var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/proc': No such file or directory
+remove with rmdir: /var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/lib
+rmdir: failed to remove '/var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/lib': No such file or directory
+remove with rmdir: /var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/sys
+rmdir: failed to remove '/var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/sys': No such file or directory
+remove with rmdir: /var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/bin
+rmdir: failed to remove '/var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/bin': No such file or directory
+remove with -r: /var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/dev
+rm: cannot remove '/var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/dev': No such file or directory
+remove with rmdir: /var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/usr/share/fonts
+rmdir: failed to remove '/var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/usr/share/fonts': No such file or directory
+remove with rmdir: /var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/etc/fonts
+rmdir: failed to remove '/var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/etc/fonts': No such file or directory
+remove with rmdir: /var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/var/log/files_repository/Java/515bfdd7-1d15-4d41-878f-8dee7c23008b
+rmdir: failed to remove '/var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/var/log/files_repository/Java/515bfdd7-1d15-4d41-878f-8dee7c23008b': No such file or directory
+remove with rmdir: /var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/opt/CPsuite-R82/fw1/te_file_analyzer/aspose_jars
+rmdir: failed to remove '/var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/opt/CPsuite-R82/fw1/te_file_analyzer/aspose_jars': No such file or directory
+remove with rmdir: /var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/opt/CPsuite-R82/fw1/te_file_analyzer/jre
+rmdir: failed to remove '/var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/opt/CPsuite-R82/fw1/te_file_analyzer/jre': No such file or directory
+remove with rmdir: /var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/opt/CPsuite-R82/fw1/te_file_analyzer
+rmdir: failed to remove '/var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/opt/CPsuite-R82/fw1/te_file_analyzer': No such file or directory
+remove with rmdir: /var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/opt/CPsuite-R82/fw1/tmp/te
+rmdir: failed to remove '/var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/opt/CPsuite-R82/fw1/tmp/te': No such file or directory
+remove with rmdir: /var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/var/log/opt/CPsuite-R82/fw1/tmp/te
+rmdir: failed to remove '/var/log/aspose/opt/CPsuite-R82/fw1/aspose_jail/var/log/opt/CPsuite-R82/fw1/tmp/te': No such file or directory
+aspose jail - clean end
+going to run /opt/CPsuite-R82/fw1/teCurrentPack/tedCleanEnv.sh
+turning on ted
+[31285 4041029696][26 May 17:42:56] [TE_TRACE]: daemon starting
+[31285 4041029696][26 May 17:42:56] [TE_TRACE]: Environment variable TE_UPDATES_HOME does not exists. setting it to /var/log/files_repository
+[31285 4041029696][26 May 17:42:56] [TE_TRACE]: Asking Update file repository to save the following revision: 602500
+[31285 4041029696][26 May 17:42:56] [TE_TRACE]: register to AMW policy install and TED_RECONF
+[31285 4041029696][26 May 17:42:56]  [TE (TD::Surprise)] te::Daemon::StartApplicationSpecifics: REDUNDANT CODE: sha256 digest was already added
+[31285 4041029696][26 May 17:42:56] [TE_SM]: SchemaReader: in readProxySettings - failed getting proxy_settings object
+[31285 4041029696][26 May 17:42:56] [TE_SM]: SchemaReader: in fetchData - failed getting proxy_settings
+[31285 4041029696][26 May 17:42:56] [TE_SM]: tpConfClient is on Traditional mode - using old schema reader
+[31285 4041029696][26 May 17:42:56]  [TE (TD::Surprise)] te::UpdateableFilesManagerBase::FindFileLastRevision: Can't get latest revision for file type CRM Package with UID 765659DC-1BD4-4FC0-B270-F32AA0B48714, the file does not exist in the list
+[31285 4041029696][26 May 17:42:56]  [TE (TD::Surprise)] te::UpdateableFilesManagerBase::FindFileLastRevision: Can't get latest revision for file type CRM Package with UID 765659DC-1BD4-4FC0-B270-F32AA0B48714, the file does not exist in the list
+[31285 4041029696][26 May 17:42:56]  [TE (TD::Surprise)] te::UpdateableFilesManagerBase::FindFileLastRevision: Can't get latest revision for file type CRM Package with UID 765659DC-1BD4-4FC0-B270-F32AA0B48714, the file does not exist in the list
+[31285 4041029696][26 May 17:42:56]  [TE (TD::Surprise)] te::UpdateableFilesManagerBase::FindFileLastRevision: Can't get latest revision for file type CRM Package with UID 765659DC-1BD4-4FC0-B270-F32AA0B48714, the file does not exist in the list
+[31285 4041029696][26 May 17:42:56]  [TE (TD::Surprise)] readJsonFile: JSON file not found: /opt/CPsuite-R82/fw1/conf/scar_client_conf.json
+[31285 4041029696][26 May 17:42:57] [TE_TRACE]: init TE specific features
+[31285 4041029696][26 May 17:42:57] [TE_TRACE]: initialize contract manager
+[31285 4041029696][26 May 17:42:57] [TE_TRACE]: start monitoring
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::DatabaseManager::CreateIndex: Failed to create index CREATE INDEX IF NOT EXISTS date_and_hits_index ON VerdictsTable(date_and_hits ASC);
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::DatabaseManager::AddDateAndHitsIndex: Failed to create index, reinitializing the database
+[31285 4041029696][26 May 17:42:57] [TE_TRACE]: Database File successfully deleted: ted_local_db
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Critical)] te::DatabaseManager::CreateNewDatabase: New Database was created.
+[31285 3833514816][26 May 17:42:57] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} Handling new file "eicar.com.txt.doc", Path: /var/log/mal_files/eicar.com.txt.doc, rule_number = 1, rule name =  , investigation_path = PATH_TE
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::Utils::readFileToJson: File does not exists /opt/CPsuite-R82/fw1/conf/te_api_keys.conf
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::Utils::readFileToJson: File does not exists /opt/CPsuite-R82/fw1/conf/te_jwt_keys.conf
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::JWTConsumer::GetAPIKeys: Failed to read /opt/CPsuite-R82/fw1/conf/te_jwt_keys.conf as json
+[31285 4041029696][26 May 17:42:57] [TE_TRACE]: daemon reconf (FW1)
+[31285 4041029696][26 May 17:42:57] [TE_SM]: SchemaReader: in readProxySettings - failed getting proxy_settings object
+[31285 4041029696][26 May 17:42:57] [TE_SM]: SchemaReader: in fetchData - failed getting proxy_settings
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] readJsonFile: JSON file not found: /opt/CPsuite-R82/fw1/conf/scar_client_conf.json
+[31285 4041029696][26 May 17:42:57]  [TE_TRACE (TD::Important)] te::URLInvestigator::DoReconf: proxy is not set
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::Utils::readFileToJson: File does not exists /static/ifi_infra_src/config/server_config.json
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::TedIFIAdvisor::getConnectorIP: Failed to read ifi server config file
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::TedIFIAdvisor::getConnectorIP: failed getting ipaddress
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::Utils::readFileToJson: File does not exists /static/ifi_infra_src/config/server_config.json
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::TedIFIAdvisor::getConnectorPort: Failed to read ifi server config file
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::TedIFIAdvisor::getConnectorPort: failed getting port
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::TedIFIAdvisor::Init: TEDIFI revision is 0, stopping init process
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::AdvisoryInvestigator::AddAdvisor: Failed to init advisor TEDIFI
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::Utils::readFileToJson: File does not exists /static/ifi_infra_src/config/server_config.json
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::TedIFIAdvisor::getConnectorPort: Failed to read ifi server config file
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::TedIFIAdvisor::getConnectorPort: failed getting port
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::EngineHttpConnector::forcefullyTerminateServer: CpSystem() failed for cmd: fuser -k 12563/tcp, exitCode= 1
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::EngineHttpConnector::forcefullyTerminateServer: CpSystem() failed for cmd: pkill -9 ifiPython3, exitCode= 1
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::AdvisoryInvestigator::PrepareAllAdvisors: Failed to prepare/remove TEDIFI advisor
+[31285 4041029696][26 May 17:42:57]  [TE_TRACE (TD::Important)] te::EmbeddedFilesAnalyzerInvestigator::DoReconf: proxy is not set
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::ExeAnalyzerDownloader::LoadUpdatedVer: no revision available from UpdateableFilesRepository: got 0
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::ExeAnalyzerDownloader::LoadUpdatedVer: no revision available from UpdateableFilesRepository: got 0
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::Utils::readFileToJson: File does not exists /static/ifi_infra_src/config/server_config.json
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::TedIFIAdvisor::getConnectorIP: Failed to read ifi server config file
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::TedIFIAdvisor::getConnectorIP: failed getting ipaddress
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::Utils::readFileToJson: File does not exists /static/ifi_infra_src/config/server_config.json
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::TedIFIAdvisor::getConnectorPort: Failed to read ifi server config file
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::TedIFIAdvisor::getConnectorPort: failed getting port
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::TedIFIAdvisor::Init: TEDIFI revision is 0, stopping init process
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::AdvisoryInvestigator::AddAdvisor: Failed to init advisor TEDIFI
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::Utils::readFileToJson: File does not exists /static/ifi_infra_src/config/server_config.json
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::TedIFIAdvisor::getConnectorPort: Failed to read ifi server config file
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::TedIFIAdvisor::getConnectorPort: failed getting port
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::EngineHttpConnector::forcefullyTerminateServer: CpSystem() failed for cmd: fuser -k 12563/tcp, exitCode= 1
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::EngineHttpConnector::forcefullyTerminateServer: CpSystem() failed for cmd: pkill -9 ifiPython3, exitCode= 1
+[31285 4041029696][26 May 17:42:57]  [TE (TD::Surprise)] te::AdvisoryInvestigator::PrepareAllAdvisors: Failed to prepare/remove TEDIFI advisor
+[31285 4041029696][26 May 17:42:57] [TE_TRACE]: Asking Update file repository to save the following revision: 602500
+[31285 4041029696][26 May 17:42:57] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'system state' (phase: 'prepare') EP RefCount: 4
+[31285 4041029696][26 May 17:42:57] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'system state' reporting back (status: done)
+[31285 4041029696][26 May 17:42:57] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'url prepare handler' (phase: 'prepare') EP RefCount: 4
+[31285 4041029696][26 May 17:42:57] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'url prepare handler' reporting back (status: done)
+[31285 4041029696][26 May 17:42:57] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'classifier' (phase: 'prepare') EP RefCount: 4
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'classifier' reporting back (status: done)
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'policy' (phase: 'prepare') EP RefCount: 4
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} adding image '5e5de275-a103-4f67-b55b-47532918fa59' for emulation
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} adding image 'e50e99f3-5963-4573-af9e-e3f4750b55e2' for emulation
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'policy' reporting back (status: done)
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'file' (phase: 'prepare') EP RefCount: 4
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'file' reporting back (status: done)
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'prepare persistency' (phase: 'prepare') EP RefCount: 4
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'prepare persistency' reporting back (status: done)
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'contract' (phase: 'prepare') EP RefCount: 4
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'contract' reporting back (status: done)
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'cache inquirer' (phase: 'prepare') EP RefCount: 4
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'cache inquirer' reporting back (status: done)
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} path in ep: in response data: 
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} Reporting back action: unknown; Confidence: 0; InvestigationPath: PATH_TE
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'duplicate' (phase: 'processing') EP RefCount: 6
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'duplicate' reporting back (status: done)
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'url handler' (phase: 'processing') EP RefCount: 7
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'url handler' reporting back (status: done)
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'trusted source' (phase: 'processing') EP RefCount: 7
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} url is empty, don't check in white domains
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'trusted source' reporting back (status: done)
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'advisory' (phase: 'processing') EP RefCount: 7
+[31285 4041029696][26 May 17:42:58]  [TE (TD::Surprise)] te::StaticMacroAnalyzerPythonProtocol::DataReceived: Python unexpected output: /opt/CPsuite-R82/fw1/teCurrentPack/python_scripts/ChangePythonPath.sh: line 10: /PythonPack39_64/bin/python3: No such file or directory
+
+[31285 4041029696][26 May 17:42:58]  [TE (TD::Surprise)] te::StaticAnalysisProtocol::DataReceived: StaticAnalysisProtocol waiting for pid but received /opt/CPsuite-R82/fw1/teCurrentPack/SA_PythonWrapper.sh: line 15: /PythonPack39_64/bin/python3: No such file or directory
+
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'advisory' reporting back (status: done)
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} path in ep: in response data: 
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} Done with file; Reporting back action: drop; Confidence: 3; InvestigationPath: PATH_TE
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'ml decider express' (phase: 'processing') EP RefCount: 9
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'ml decider express' reporting back (status: done)
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'file analyzer' (phase: 'processing') EP RefCount: 9
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'file analyzer' reporting back (status: done)
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'domain threshold' (phase: 'processing') EP RefCount: 9
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'domain threshold' reporting back (status: done)
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'Web Emulation phase1' (phase: 'processing') EP RefCount: 9
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'Web Emulation phase1' reporting back (status: done)
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'Web Emulation phase2' (phase: 'processing') EP RefCount: 9
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'Web Emulation phase2' reporting back (status: done)
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'emulator' (phase: 'processing') EP RefCount: 9
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} investigator 'emulator' reporting back (status: done)
+[31285 4041029696][26 May 17:42:58] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} calling investigator 'cloud emulation' (phase: 'processing') EP RefCount: 9
+[31285 4041029696][26 May 17:43:02] [TE_TRACE]: Starting periodic update process
+[31285]@gw[26 May 17:43:07] set_env_state: fwd_env abuse occured: env->curr_status = 2
+
+[31285 4041029696][26 May 17:43:26] [TE_TRACE]: daemon reconf (AMW)
+[31285 4041029696][26 May 17:43:26] [TE_SM]: SchemaReader: in readProxySettings - failed getting proxy_settings object
+[31285 4041029696][26 May 17:43:26] [TE_SM]: SchemaReader: in fetchData - failed getting proxy_settings
+[31285 4041029696][26 May 17:43:26] [TE_SM]: tpConfClient is on Traditional mode - using old schema reader
+[31285 4041029696][26 May 17:43:26]  [TE (TD::Surprise)] readJsonFile: JSON file not found: /opt/CPsuite-R82/fw1/conf/scar_client_conf.json
+[31285 4041029696][26 May 17:43:26]  [TE_TRACE (TD::Important)] te::URLInvestigator::DoReconf: proxy is not set
+[31285 4041029696][26 May 17:43:26]  [TE_TRACE (TD::Important)] te::EmbeddedFilesAnalyzerInvestigator::DoReconf: proxy is not set
+[31285 4041029696][26 May 17:43:26]  [TE (TD::Surprise)] te::ExeAnalyzerDownloader::LoadUpdatedVer: no revision available from UpdateableFilesRepository: got 0
+[31285 4041029696][26 May 17:43:26]  [TE (TD::Surprise)] te::UpdateableFilesManagerBase::FindFileLastRevision: Can't get latest revision for file type Exe_Analyzer with UID 2859c07d-1f23-464a-92cd-f9f1ead26915, the file does not exist in the list
+[31285 4041029696][26 May 17:43:26]  [TE (TD::Surprise)] te::ExeAnalyzerDownloader::LoadUpdatedVer: no revision available from UpdateableFilesRepository: got 0
+[31285 4041029696][26 May 17:43:26] [TE_TRACE]: Asking Update file repository to save the following revision: 602500
+[31285 4041029696][26 May 17:43:28] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} uploaded to 99.80.93.100. (cloud emulation)
+[31285 4041029696][26 May 17:43:30]  [TE (TD::Surprise)] te::UpdateableFilesManagerBase::GetUpdatedFileDir: Can't get latest revision for file type ML utilities Package with UID 64C142A4-38E2-4B6F-84D6-F02F1A0B6BDF, the file does not exist in the list
+[31285 4041029696][26 May 17:43:31]  [TE (TD::Critical)] te::RPMIManager::RPMIConfFinished: Failed execute RPMI conf building
+[31285 4041029696][26 May 17:43:41] [TE_TRACE]: Got a new Java update (revision: 174)
+[31285 4041029696][26 May 17:43:41] [TE_TRACE]: Setting Java path to: /var/log/files_repository/Java/515bfdd7-1d15-4d41-878f-8dee7c23008b/174/jre/bin/java
+[31285 4041029696][26 May 17:43:43]  [TE_IS_TRACE (TD::All)] te_is::SocketApiServer::HandleDataEvent: got on conn_id: 3 data:
+(
+	:connection (
+		:src_ip (127.0.0.1)
+		:src_port ()
+		:dst_ip (127.0.0.1)
+		:dst_port (30580)
+		:protocol (6)
+	)
+	:meta_data (
+		:file_orig_name (eicar.com.txt.doc)
+		:file_path ("/var/log/mal_files/eicar.com.txt.doc")
+		:file_type (doc)
+		:file_len (0)
+		:protocol (http)
+		:rule_id (1)
+		:free_text ("(te_add_file)")
+		:should_track (1)
+		:malware_rule_id ()
+		:scope_ip ()
+		:conn_id ()
+		:session_id ()
+		:instance_id ()
+		:investigation_path (PATH_TE)
+		:cdir (2)
+		:forced_file_type ()
+		:sand_blast_forensics (0)
+		:internet_access (0)
+		:save_json_path ()
+		:save_mal_events_path ()
+		:av_deep_scan ()
+		:av_ifi ()
+		:predefined_images ()
+		:emulation_params ()
+	)
+	:http_data (
+		:url ()
+	)
+	:smtp_data (
+		:to ()
+		:from ()
+		:subject ()
+		:body_path ()
+	)
+)
+
+[31285 4041029696][26 May 17:43:43] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} Handling new file "eicar.com.txt.doc", Path: /var/log/mal_files/eicar.com.txt.doc, rule_number = 1, rule name =  , investigation_path = PATH_TE
+[31285 4041029696][26 May 17:43:43] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} calling investigator 'system state' (phase: 'prepare') EP RefCount: 4
+[31285 4041029696][26 May 17:43:43] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} investigator 'system state' reporting back (status: done)
+[31285 4041029696][26 May 17:43:43] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} calling investigator 'url prepare handler' (phase: 'prepare') EP RefCount: 4
+[31285 4041029696][26 May 17:43:43] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} investigator 'url prepare handler' reporting back (status: done)
+[31285 4041029696][26 May 17:43:43] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} calling investigator 'classifier' (phase: 'prepare') EP RefCount: 4
+[31285 4041029696][26 May 17:43:43] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} investigator 'classifier' reporting back (status: done)
+[31285 4041029696][26 May 17:43:43] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} calling investigator 'policy' (phase: 'prepare') EP RefCount: 4
+[31285 4041029696][26 May 17:43:43] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} adding image '5e5de275-a103-4f67-b55b-47532918fa59' for emulation
+[31285 4041029696][26 May 17:43:43] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} adding image 'e50e99f3-5963-4573-af9e-e3f4750b55e2' for emulation
+[31285 4041029696][26 May 17:43:43] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} investigator 'policy' reporting back (status: done)
+[31285 4041029696][26 May 17:43:43] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} calling investigator 'file' (phase: 'prepare') EP RefCount: 4
+[31285 4041029696][26 May 17:43:43] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} investigator 'file' reporting back (status: done)
+[31285 4041029696][26 May 17:43:43] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} calling investigator 'prepare persistency' (phase: 'prepare') EP RefCount: 4
+[31285 4041029696][26 May 17:43:43] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} investigator 'prepare persistency' reporting back (status: done)
+[31285 4041029696][26 May 17:43:43] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} calling investigator 'contract' (phase: 'prepare') EP RefCount: 8
+[31285 4041029696][26 May 17:43:43] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} investigator 'contract' reporting back (status: done)
+[31285 4041029696][26 May 17:43:43] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} calling investigator 'cache inquirer' (phase: 'prepare') EP RefCount: 8
+[31285 4041029696][26 May 17:43:43] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} investigator 'cache inquirer' reporting back (status: done)
+[31285 4041029696][26 May 17:43:43] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} path in ep: in response data: 
+[31285 4041029696][26 May 17:43:43] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} Reporting back action: unknown; Confidence: 0; InvestigationPath: PATH_TE
+[31285 4041029696][26 May 17:43:43]  [TE_IS_TRACE (TD::All)] te_is::SocketApiServer::Transmit: transmit on conn_id: 3 data:
+(
+	:event_id ("{5C48C2CE-0DE5-F64F-8B58-75C83D409BAE}")
+	:action (unknown)
+	:confidence (none)
+	:done (0)
+	:file_path ("/var/log/mal_files/eicar.com.txt.doc")
+	:md5_string (ac68ab9df987b004d7addc6e7a3532f4)
+	:investigation_path (PATH_TE)
+	:additional_data ()
+	:body_path ()
+)
+
+[31285 4041029696][26 May 17:43:43] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} calling investigator 'duplicate' (phase: 'processing') EP RefCount: 6
+[31285 4041029696][26 May 17:43:43] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} investigator 'duplicate' reporting back (status: done)
+[31285 4041029696][26 May 17:43:43] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} calling investigator 'url handler' (phase: 'processing') EP RefCount: 7
+[31285 4041029696][26 May 17:43:43] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} investigator 'url handler' reporting back (status: done)
+[31285 4041029696][26 May 17:43:43] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} calling investigator 'trusted source' (phase: 'processing') EP RefCount: 7
+[31285 4041029696][26 May 17:43:43] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} url is empty, don't check in white domains
+[31285 4041029696][26 May 17:43:43] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} investigator 'trusted source' reporting back (status: done)
+[31285 4041029696][26 May 17:43:43] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} calling investigator 'advisory' (phase: 'processing') EP RefCount: 7
+[31285 4041029696][26 May 17:43:43]  [TE (TD::Surprise)] te::StaticMacroAnalyzerPythonProtocol::DataReceived: Python unexpected output: /opt/CPsuite-R82/fw1/teCurrentPack/python_scripts/oletools/oleobj.py:581: SyntaxWarning: "is" with a literal. Did you mean "=="?
+
+[31285 4041029696][26 May 17:43:43]  [TE (TD::Surprise)] te::StaticMacroAnalyzerPythonProtocol::DataReceived: Python unexpected output:   if idx is -1:
+
+[31285 4041029696][26 May 17:43:45] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} investigator 'advisory' reporting back (status: done)
+[31285 4041029696][26 May 17:43:45] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} calling investigator 'ml decider express' (phase: 'processing') EP RefCount: 8
+[31285 4041029696][26 May 17:43:45] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} investigator 'ml decider express' reporting back (status: done)
+[31285 4041029696][26 May 17:43:45] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} calling investigator 'file analyzer' (phase: 'processing') EP RefCount: 8
+[31285 4041029696][26 May 17:43:45] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} investigator 'file analyzer' reporting back (status: done)
+[31285 4041029696][26 May 17:43:45] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} calling investigator 'domain threshold' (phase: 'processing') EP RefCount: 8
+[31285 4041029696][26 May 17:43:45] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} investigator 'domain threshold' reporting back (status: done)
+[31285 4041029696][26 May 17:43:45] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} calling investigator 'Web Emulation phase1' (phase: 'processing') EP RefCount: 8
+[31285 4041029696][26 May 17:43:45] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} investigator 'Web Emulation phase1' reporting back (status: done)
+[31285 4041029696][26 May 17:43:45] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} calling investigator 'Web Emulation phase2' (phase: 'processing') EP RefCount: 8
+[31285 4041029696][26 May 17:43:45] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} investigator 'Web Emulation phase2' reporting back (status: done)
+[31285 4041029696][26 May 17:43:45] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} calling investigator 'emulator' (phase: 'processing') EP RefCount: 8
+[31285 4041029696][26 May 17:43:45] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} investigator 'emulator' reporting back (status: done)
+[31285 4041029696][26 May 17:43:45] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} calling investigator 'cloud emulation' (phase: 'processing') EP RefCount: 8
+[31285 4041029696][26 May 17:43:50] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} uploaded to 108.132.69.148. (cloud emulation)
+[31285 4041029696][26 May 17:43:55] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} path in ep: in response data: 
+[31285 4041029696][26 May 17:43:56] [TE_TRACE]: {5C48C2CE-0DE5-F64F-8B58-75C83D409BAE} Done with file; Reporting back action: drop; Confidence: 3; InvestigationPath: PATH_TE
+[31285 4041029696][26 May 17:43:56]  [TE_IS_TRACE (TD::All)] te_is::SocketApiServer::Transmit: transmit on conn_id: 3 data:
+(
+	:event_id ("{5C48C2CE-0DE5-F64F-8B58-75C83D409BAE}")
+	:action (drop)
+	:confidence (high)
+	:done (1)
+	:file_path ("/var/log/mal_files/eicar.com.txt.doc")
+	:md5_string (ac68ab9df987b004d7addc6e7a3532f4)
+	:investigation_path (PATH_TE)
+	:additional_data ()
+	:body_path ()
+)
+
+[31285 4041029696][26 May 17:43:57]  [TE (TD::Surprise)] te::DownloadManager::FinishStep: Failed performing action as part of update operation for file type Exe_Analyzer, UID 89186e01-9879-459c-be39-feadaa1d7fb3, revision 5916226. failed running step (chain step 2)
+[31285 4041029696][26 May 17:43:57] [TE_TRACE]: Got a new Executable Analyzer signatures update (revision: 5916226)
+[31285 4041029696][26 May 17:43:57] [TE_TRACE]: Got Python3 signatures package update for the first time, will run UpgradeScript and use Python3 signatures
+[31285 4041029696][26 May 17:43:57] [TE_TRACE]: Exe Analyzer UpgradeScript file /opt/CPsuite-R82/fw1//UpgradeScript, doesn't exist
+[31285 4041029696][26 May 17:43:57]  [TE (TD::Surprise)] te::UpdateableFilesManagerBase::FindFileLastRevision: Can't get latest revision for file type Exe_Analyzer with UID 2859c07d-1f23-464a-92cd-f9f1ead26915, the file does not exist in the list
+[31285 4041029696][26 May 17:43:57]  [TE (TD::Surprise)] te::RPMIConfig::GetRPMIServerThatContainsTheApp: failed to find a server that contains yara
+[31285 4041029696][26 May 17:43:57]  [TE (TD::Surprise)] te::TedStatusReadyManager::UpdateComponentStatus: Invalid component name
+[31285 4041029696][26 May 17:43:57] [TE_TRACE]: Starting licenses refreshment 
+[31285 4041029696][26 May 17:43:59] [TE_TRACE]: Got a new Executable Analyzer engine update (revision: 602444)
+[31285 4041029696][26 May 17:43:59] [TE_TRACE]: loading executable analyzer engine configuration (revision: 602444)
+[31285 4041029696][26 May 17:43:59]  [TE (TD::Surprise)] te::ExeAnalyzerDownloader::ReadConfidenceMappingFile: ReadFile() failed - Did not read confidenceMap file: /var/log/files_repository/Analyzer/390183b9-6eb7-4135-9ac4-76de08ff3387/602444/confidenceMap.set
+[31285 4041029696][26 May 17:43:59]  [TE (TD::Surprise)] te::TedStatusReadyManager::UpdateComponentStatus: Invalid component name
+[31285 4041029696][26 May 17:43:59] [TE_TRACE]: Database File successfully deleted: ted_local_db
+[31285 4041029696][26 May 17:43:59]  [TE (TD::Critical)] te::DatabaseManager::CreateNewDatabase: New Database was created.
+[31285 4041029696][26 May 17:43:59] [TE_TRACE]: Local Cache cleared
+[31285 4041029696][26 May 17:44:00]  [TE_IS_TRACE (TD::All)] te_is::SocketApiServer::HandleDataEvent: got on conn_id: 4 data:
+(
+	:connection (
+		:src_ip (127.0.0.1)
+		:src_port ()
+		:dst_ip (127.0.0.1)
+		:dst_port (30580)
+		:protocol (6)
+	)
+	:meta_data (
+		:file_orig_name (eicar.com.txt.doc)
+		:file_path ("/var/log/mal_files/eicar.com.txt.doc")
+		:file_type (doc)
+		:file_len (0)
+		:protocol (http)
+		:rule_id (1)
+		:free_text ("(te_add_file)")
+		:should_track (1)
+		:malware_rule_id ()
+		:scope_ip ()
+		:conn_id ()
+		:session_id ()
+		:instance_id ()
+		:investigation_path (PATH_TE)
+		:cdir (2)
+		:forced_file_type ()
+		:sand_blast_forensics (0)
+		:internet_access (0)
+		:save_json_path ()
+		:save_mal_events_path ()
+		:av_deep_scan ()
+		:av_ifi ()
+		:predefined_images ()
+		:emulation_params ()
+	)
+	:http_data (
+		:url ()
+	)
+	:smtp_data (
+		:to ()
+		:from ()
+		:subject ()
+		:body_path ()
+	)
+)
+
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} Handling new file "eicar.com.txt.doc", Path: /var/log/mal_files/eicar.com.txt.doc, rule_number = 1, rule name =  , investigation_path = PATH_TE
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} calling investigator 'system state' (phase: 'prepare') EP RefCount: 4
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} investigator 'system state' reporting back (status: done)
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} calling investigator 'url prepare handler' (phase: 'prepare') EP RefCount: 4
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} investigator 'url prepare handler' reporting back (status: done)
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} calling investigator 'classifier' (phase: 'prepare') EP RefCount: 4
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} investigator 'classifier' reporting back (status: done)
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} calling investigator 'policy' (phase: 'prepare') EP RefCount: 4
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} adding image '5e5de275-a103-4f67-b55b-47532918fa59' for emulation
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} adding image 'e50e99f3-5963-4573-af9e-e3f4750b55e2' for emulation
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} investigator 'policy' reporting back (status: done)
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} calling investigator 'file' (phase: 'prepare') EP RefCount: 4
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} investigator 'file' reporting back (status: done)
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} calling investigator 'prepare persistency' (phase: 'prepare') EP RefCount: 4
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} investigator 'prepare persistency' reporting back (status: done)
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} calling investigator 'contract' (phase: 'prepare') EP RefCount: 8
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} investigator 'contract' reporting back (status: done)
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} calling investigator 'cache inquirer' (phase: 'prepare') EP RefCount: 8
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} investigator 'cache inquirer' reporting back (status: done)
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} path in ep: in response data: 
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} Reporting back action: unknown; Confidence: 0; InvestigationPath: PATH_TE
+[31285 4041029696][26 May 17:44:00]  [TE_IS_TRACE (TD::All)] te_is::SocketApiServer::Transmit: transmit on conn_id: 4 data:
+(
+	:event_id ("{41B04ABE-BE29-8846-AE21-F33F019F784E}")
+	:action (unknown)
+	:confidence (none)
+	:done (0)
+	:file_path ("/var/log/mal_files/eicar.com.txt.doc")
+	:md5_string (06b1aa7edfe5ffe2e6a58937f519cc13)
+	:investigation_path (PATH_TE)
+	:additional_data ()
+	:body_path ()
+)
+
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} calling investigator 'duplicate' (phase: 'processing') EP RefCount: 6
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} investigator 'duplicate' reporting back (status: done)
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} calling investigator 'url handler' (phase: 'processing') EP RefCount: 7
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} investigator 'url handler' reporting back (status: done)
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} calling investigator 'trusted source' (phase: 'processing') EP RefCount: 7
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} url is empty, don't check in white domains
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} investigator 'trusted source' reporting back (status: done)
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} calling investigator 'advisory' (phase: 'processing') EP RefCount: 7
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} investigator 'advisory' reporting back (status: done)
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} calling investigator 'ml decider express' (phase: 'processing') EP RefCount: 8
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} investigator 'ml decider express' reporting back (status: done)
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} calling investigator 'file analyzer' (phase: 'processing') EP RefCount: 8
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} investigator 'file analyzer' reporting back (status: done)
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} calling investigator 'domain threshold' (phase: 'processing') EP RefCount: 8
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} investigator 'domain threshold' reporting back (status: done)
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} calling investigator 'Web Emulation phase1' (phase: 'processing') EP RefCount: 8
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} investigator 'Web Emulation phase1' reporting back (status: done)
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} calling investigator 'Web Emulation phase2' (phase: 'processing') EP RefCount: 8
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} investigator 'Web Emulation phase2' reporting back (status: done)
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} calling investigator 'emulator' (phase: 'processing') EP RefCount: 8
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} investigator 'emulator' reporting back (status: done)
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} calling investigator 'cloud emulation' (phase: 'processing') EP RefCount: 8
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} uploaded to 108.132.69.148. (cloud emulation)
+[31285 4041029696][26 May 17:44:00] [TE_TRACE]: Starting periodic update process
+[31285 4041029696][26 May 17:44:04] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} path in ep: in response data: 
+[31285 4041029696][26 May 17:44:04] [TE_TRACE]: {41B04ABE-BE29-8846-AE21-F33F019F784E} Done with file; Reporting back action: drop; Confidence: 3; InvestigationPath: PATH_TE
+[31285 4041029696][26 May 17:44:04]  [TE_IS_TRACE (TD::All)] te_is::SocketApiServer::Transmit: transmit on conn_id: 4 data:
+(
+	:event_id ("{41B04ABE-BE29-8846-AE21-F33F019F784E}")
+	:action (drop)
+	:confidence (high)
+	:done (1)
+	:file_path ("/var/log/mal_files/eicar.com.txt.doc")
+	:md5_string (06b1aa7edfe5ffe2e6a58937f519cc13)
+	:investigation_path (PATH_TE)
+	:additional_data ()
+	:body_path ()
+)
+
+[31285 4041029696][26 May 17:44:26]  [TE (TD::Surprise)] te::TedStatusReadyManager::UpdateComponentStatus: Invalid component name
+[31285 4041029696][26 May 17:45:12] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} verdict 'Malicious' set for image: '5e5de275-a103-4f67-b55b-47532918fa59' (Win7,Office 2013,Adobe 11) by: cloud emulation, reason: 
+[31285 4041029696][26 May 17:45:12] [TE_TRACE]: {9F18EBE7-AB1C-8747-8B92-014FCF769C03} verdict 'Malicious' set for image: 'e50e99f3-5963-4573-af9e-e3f4750b55e2' (WinXP,Office 2003/7,Adobe 9) by: cloud emulation, reason: 
