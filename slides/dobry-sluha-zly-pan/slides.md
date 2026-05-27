@@ -209,6 +209,33 @@ layoutClass: gap-10
 class: text-left
 ---
 
+# Usecase: Check Point 
+# a LOGY na hraní
+
+Na učení a při sdílení dat nebo dokonce hesel s poskytovatelem LLM lze pro experimenty využít i Check Point SmartConsole *demo mode*, který je také sustupný na IP adrese, lze prodloužit a má známehé uživatele admin / demo123:
+
+![alt text](./image-10.png)
+
+::right::
+
+Klíčové know-how je IP adresa a USERNAME / PASSWORD z tajného menu:
+![alt text](./image-11.png)
+
+Prompty:
+
+```markdown
+check point talks @management-api-postman-collection.json 
+on IP 63.180.230.42
+using USERNAME admin and PASSWORD demo123 - 
+login and show me last 10 Threat Emulation logs
+```
+
+---
+layout: two-cols
+layoutClass: gap-10
+class: text-left
+---
+
 # Usecase: Změny do Check Pointu
 
 Prompty:
