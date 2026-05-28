@@ -335,7 +335,7 @@ Ctrl-P - export session transcript to markdown file with timestamp in name
 
 
 ---
----
+
 
 # Use case: vyhodnocení komplexního logu s prolínajícími se transakcemi a možnými problémy
 Prompty:
@@ -347,9 +347,89 @@ precti @ted.elg a spoj informace podle unikatnioho identifikatoru transakce za j
 ```bash
 cd reports && npx -y http-server -p 11150
 ```
+
+---
+layoutClass: gap-10
+class: text-left
+---
+
+# Use case: relevantní informace a chování na základě rozsáhlé dokumentace
+
+```bash
+npx -y ctx7 setup --opencode
+```
+
+Prompty:
+```markdown
+pouzij /chkp-antonr/checkpoint-api-ref s context7
+a udelej malou ukazku, jak se prihlasim do check point managementu
+a zalozim network feed s URL https://feeds.demo.local/f1
+s flat IP listem a aktualizaci jednou za 5 minut.
+vypublikuju, odhlasim. krok za krokem vysvetluj
+```
+
+https://context7.com/chkp-antonr/checkpoint-api-ref?chat=493696c7-4f74-4646-9c03-80e16704aa53&tab=chat
+
+---
+layoutClass: gap-10
+class: text-left
+---
+
+# Use case: skills a ovládání prohlížeče
+
+<details>
+<summary>Instalace a spuštění</summary>
+
+```bash
+npx -y skills
+
+npx -y skills find "agent browser"
+
+npx -y skills add vercel-labs/agent-browser@agent-browser -y
+
+opencode
+
+# /skills
+```
+
+</details>
+
+Prompty:
+```markdown
+pouzij agent browser skill a headed otevri 
+advisories.checkpoint.com a shrn prvni 3 polozky
+z tabulky s CVE, CVSS, popisem a odkazem.
+
+pouzij agent browser skill a headed otevri 
+advisories.checkpoint.com - stahni seznamy zranitelnosti
+ze stranek pro rok 2026 a udelaj statistiku s poctem zranitelnosti 
+za jednotlive kalendarni mesice, spocitej za mesic prumerne CVSS.
+kdyz bude treba vyresit captcha, zeptej se uzivatele, at to vyresi.
+```
+
+![alt text](./image-12.png)
+---
+layoutClass: gap-10
+class: text-left
+---
+
+# Use case: prezentace zákazníkovi
+
+```bash
+npx -y skills find "powerpoint opencode"
+npx -y skills add igorwarzocha/opencode-workflows@powerpoint -y
+```
+
+Prompty:
+```markdown
+pouzij powerpoint skill a vytvor prezentaci s 5ti slidama o tom,
+co je to opencode, jak se instaluje, jak se pouziva, a jak se 
+da pouzit pro check point management. 
+dej tomu pekny design a pridavej relevantni obrazky.
 ```
 
 ---
+
 
 # Learn More
 
