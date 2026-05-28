@@ -341,13 +341,17 @@ Ctrl-P - export session transcript to markdown file with timestamp in name
 Prompty:
 
 ```markdown
-precti @ted.elg a spoj informace podle unikatnioho identifikatoru transakce za jeden soubor. zpracuj do svetleho prehledneho reportu pro porozumeneni prubehu vyhodnoceni souboru, verdiktu, trvani a moznych problemu behem zpracovani. jediny html report bez vnejsich zavislosti
+precti @ted.elg a spoj informace podle unikatnioho identifikatoru transakce. 
+zpracuj do svetleho prehledneho reportu pro porozumeneni prubehu 
+vyhodnoceni souboru, verdiktu, trvani a moznych problemu behem zpracovani. 
+jediny html report bez vnejsich zavislosti
 ```
 
 ```bash
 cd reports && npx -y http-server -p 11150
 ```
 
+![alt text](./image-14.png)
 ---
 layoutClass: gap-10
 class: text-left
@@ -428,6 +432,7 @@ da pouzit pro check point management.
 dej tomu pekny design a pridavej relevantni obrazky.
 ```
 
+![alt text](./image-13.png)
 ---
 
 
