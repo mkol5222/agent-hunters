@@ -23,14 +23,13 @@ jobs:
         with:
           node-version: 'lts/*'
 
-      - name: Setup @antfu/ni
-        run: npm i -g @antfu/ni
-
       - name: Install dependencies
-        run: nci
+        working-directory: slides/dobry-sluha-zly-pan
+        run: npm ci
 
       - name: Build
-        run: nr build --base /${{github.event.repository.name}}/slides/dobry-sluha-zly-pan
+        working-directory: slides/dobry-sluha-zly-pan
+        run: npm run build -- --base /${{ github.event.repository.name }}/slides/dobry-sluha-zly-pan/
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
